@@ -1,0 +1,349 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #f4f9fc, #eef5f9);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(90deg, #004466, #006699);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  transition: 0.3s ease;
+  border-radius: 5px;
+}
+
+.nav-links li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Slideshow */
+.slideshow {
+  position: relative;
+  max-width: 100%;
+  height: 400px;
+  overflow: hidden;
+  margin-top: 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.slideshow img,
+.slideshow video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.buttons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  padding: 0 20px;
+}
+
+.buttons button {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 12px 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.buttons button:hover {
+  background: #f39c12;
+  transform: scale(1.1);
+}
+
+/* Advertisement Section */
+.ads {
+  background: #fff;
+  margin: 30px auto;
+  max-width: 90%;
+  padding: 25px;
+  border-left: 6px solid #004466;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.ads h2 {
+  color: #004466;
+  margin-bottom: 15px;
+  font-size: 1.6rem;
+}
+
+.ads p {
+  margin: 8px 0;
+  font-size: 1.1rem;
+}
+
+/* Registration Form */
+.form-container {
+  max-width: 450px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-top: 5px solid #004466;
+}
+
+.form-container h2 {
+  color: #004466;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-container label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-container input,
+.form-container select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.form-container input:focus,
+.form-container select:focus {
+  border-color: #006699;
+  box-shadow: 0 0 5px rgba(0,102,153,0.3);
+  outline: none;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background: linear-gradient(90deg, #004466, #006699);
+  color: white;
+  border: none;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form-container button:hover {
+  background: #f39c12;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Payment Page */
+.payment-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+  gap: 40px;
+}
+
+.payment-container {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  width: 400px;
+}
+
+.payment-container h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.payment-container p {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.student-details {
+  background: #f9f9f9;
+  padding: 15px;
+  border-left: 4px solid #3498db;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.payment-container label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.payment-container input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.card-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.pay-btn {
+  background: #3498db;
+  color: #fff;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pay-btn:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+.payment-image img {
+  max-width: 400px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.fade-slide {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  transition: opacity 0.6s ease-in-out;
+  opacity: 1;
+}
+.fade-out {
+  opacity: 0;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 300px; /* adjust as needed */
+  margin: 0 auto; /* center the form on page */
+}
+
+.qr-container {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  margin-top: 20px; /* space from button */
+}
+
+.qr-container img {
+  width: 150px; /* adjust size */
+  height: 150px;
+  object-fit: contain;
+  border: 2px solid #0a3d62;
+  border-radius: 10px;
+}
+.payment-success {
+  display: none; /* hidden by default */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f5f7fa;
+  text-align: center;
+}
+
+.tick-container {
+  font-size: 120px;
+  color: #28a745; /* green */
+  animation: pop 0.6s ease-out;
+  margin-bottom: 20px;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.2); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+.payment-success h2 {
+  font-size: 30px;
+  color: #0a3d62;
+}
+
+.payment-success p {
+  font-size: 18px;
+  color: #333;
+}
+.ads ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.ads ul li {
+  margin: 10px 0;
+}
+
+.ads ul li a {
+  text-decoration: none;
+  color: #0a3d62;
+  background: #e3f2fd;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: inline-block;
+  transition: background 0.3s, color 0.3s;
+}
+
+.ads ul li a:hover {
+  background: #0a3d62;
+  color: #fff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

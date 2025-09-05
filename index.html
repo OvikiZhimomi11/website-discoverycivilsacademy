@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Discovery Civils Academy</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* Basic styling for slideshow */
+    .slideshow {
+      position: relative;
+      max-width: 800px;
+      margin: 20px auto;
+    }
+    .slideshow img {
+      width: 100%;
+      display: none;
+    }
+    .slideshow img.active {
+      display: block;
+    }
+    .buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    .buttons button {
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 20px;
+      border-radius: 5px;
+    }
+
+    /* Announcement list */
+    .ads ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .ads ul li {
+      margin: 10px 0;
+    }
+    .ads ul li a {
+      text-decoration: none;
+      color: #0a3d62;
+      font-weight: bold;
+    }
+    .ads ul li a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <h1 class="logo"><i class="fa-solid fa-graduation-cap"></i> Discovery Civils Academy</h1>
+      <ul class="nav-links">
+        <li><a href="#"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="#"><i class="fa-solid fa-book-open"></i> Courses</a></li>
+        <li><a href="#"><i class="fa-solid fa-phone"></i> Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Slideshow -->
+  <section class="slideshow">
+    <img src="images/images.png" class="active" alt="Slide 1">
+    <img src="images/slide2.jpg" alt="Slide 2">
+    <img src="images/slide3.jpg" alt="Slide 3">
+
+    <div class="buttons">
+      <button onclick="prevSlide()">&#10094;</button>
+      <button onclick="nextSlide()">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- About / Ads Section -->
+  <section class="ads">
+    <h2><i class="fa-solid fa-bullhorn"></i> Upcoming Announcements</h2>
+    <ul>
+      <li><a href="admission.html">🎓🗓️ Admission Open for 2025 Batch – Apply Now!</a></li>
+      <li><a href="computer-courses.html">🤖 New AI Courses launching soon!</a></li>
+      <li><a href="test-registration.html">💻 Online Mock Tests Available – Register & Apply for Mock Tests!</a></li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Discovery Civils Academy | <i class="fa-solid fa-envelope"></i> contact@dca.com</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Slideshow
+    const slides = document.querySelectorAll(".slideshow img");
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      slides.forEach((img, i) => img.classList.remove("active"));
+      slides[index].classList.add("active");
+    }
+
+    function prevSlide() {
+      currentIndex--;
+      if (currentIndex < 0) currentIndex = slides.length - 1;
+      showSlide(currentIndex);
+    }
+
+    function nextSlide() {
+      currentIndex++;
+      if (currentIndex >= slides.length) currentIndex = 0;
+      showSlide(currentIndex);
+    }
+  </script>
+
+</body>
+</html>

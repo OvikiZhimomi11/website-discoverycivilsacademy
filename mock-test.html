@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mock Test | Discovery Civils Academy</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- jsPDF for PDF Download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #0a3d62;
+      margin-bottom: 10px;
+    }
+    .student-info {
+      text-align: center;
+      background: #f1f8ff;
+      border-left: 6px solid #0a3d62;
+      padding: 10px;
+      margin: 15px auto;
+      width: 80%;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+    .question-box {
+      background: #fff;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 80%;
+      transition: transform 0.2s ease-in-out;
+    }
+    .question-box:hover {
+      transform: translateY(-3px);
+    }
+    .options label {
+      display: block;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+    .btn-container {
+      text-align: center;
+      margin-top: 25px;
+    }
+    .btn {
+      background: #0a3d62;
+      color: #fff;
+      padding: 12px 20px;
+      margin: 8px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #3c6382;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <h1><i class="fa-solid fa-file-pen"></i> Mock Test</h1>
+
+  <!-- Student Info -->
+  <div id="studentInfo" class="student-info"></div>
+
+  <!-- Mock Test Questions -->
+  <form id="mockTestForm">
+    <div class="question-box">
+      <p><strong>Q1:</strong> Who is the current President of India?</p>
+      <div class="options">
+        <label><input type="radio" name="q1" value="Droupadi Murmu"> Droupadi Murmu</label>
+        <label><input type="radio" name="q1" value="Ram Nath Kovind"> Ram Nath Kovind</label>
+        <label><input type="radio" name="q1" value="Narendra Modi"> Narendra Modi</label>
+        <label><input type="radio" name="q1" value="Pranab Mukherjee"> Pranab Mukherjee</label>
+      </div>
+    </div>
+
+    <div class="question-box">
+      <p><strong>Q2:</strong> The capital of Nagaland is?</p>
+      <div class="options">
+        <label><input type="radio" name="q2" value="Kohima"> Kohima</label>
+        <label><input type="radio" name="q2" value="Dimapur"> Dimapur</label>
+        <label><input type="radio" name="q2" value="Mokokchung"> Mokokchung</label>
+        <label><input type="radio" name="q2" value="Mon"> Mon</label>
+      </div>
+    </div>
+
+    <div class="question-box">
+      <p><strong>Q3:</strong> Which is the largest planet in our Solar System?</p>
+      <div class="options">
+        <label><input type="radio" name="q3" value="Earth"> Earth</label>
+        <label><input type="radio" name="q3" value="Mars"> Mars</label>
+        <label><input type="radio" name="q3" value="Jupiter"> Jupiter</label>
+        <label><input type="radio" name="q3" value="Saturn"> Saturn</label>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="btn-container">
+      <button type="submit" class="btn"><i class="fa-solid fa-download"></i> Submit & Download PDF</button>
+      <button type="button" class="btn" onclick="window.print()"><i class="fa-solid fa-print"></i> Print Test</button>
+    </div>
+  </form>
+
+  <footer>
+    <p>&copy; 2025 Discovery Civils Academy | <i class="fa-solid fa-school"></i> Empowering Students</p>
+  </footer>
+
+  <script>
+    // Load student info
+    const student = JSON.parse(localStorage.getItem("student"));
+    if (student) {
+      document.getElementById("studentInfo").innerHTML = `
+        <p><strong><i class="fa-solid fa-user-graduate"></i> Name:</strong> ${student.name}</p>
+        <p><strong><i class="fa-solid fa-envelope"></i> Email:</strong> ${student.email}</p>
+        <p><strong><i class="fa-solid fa-building-columns"></i> Exam:</strong> ${student.exam}</p>
+        <p><strong><i class="fa-solid fa-book"></i> Subject:</strong> ${student.subject}</p>
+      `;
+    }
+
+    // Handle form submission and generate PDF
+    document.getElementById("mockTestForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // Collect answers
+      const formData = new FormData(e.target);
+      let answers = "";
+      for (let [key, value] of formData.entries()) {
+        answers += `${key}: ${value}\n`;
+      }
+
+      // Generate PDF
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.setFontSize(16);
+      doc.text("Discovery Civils Academy - Mock Test", 20, 20);
+      doc.setFontSize(12);
+      if (student) {
+        doc.text(`Name: ${student.name}`, 20, 40);
+        doc.text(`Email: ${student.email}`, 20, 50);
+        doc.text(`Exam: ${student.exam}`, 20, 60);
+        doc.text(`Subject: ${student.subject}`, 20, 70);
+      }
+      doc.text("Answers:", 20, 90);
+      doc.text(answers, 20, 100);
+
+      // Save PDF
+      doc.save(`${student.name}_MockTest.pdf`);
+      alert("✅ Your test has been submitted and downloaded as PDF!");
+    });
+  </script>
+
+</body>
+</html>
