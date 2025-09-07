@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mock Test Registration | Discovery Civils Academy</title>
   <link rel="stylesheet" href="style.css">
   <!-- Font Awesome for Icons -->
@@ -26,25 +27,36 @@
       padding: 25px;
       max-width: 500px;
       margin: 20px auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       text-align: left;
     }
 
-    .form-container label {
-      display: block;
+    .form-group {
       margin-top: 15px;
+    }
+
+    .form-group label {
       font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      color: #0a3d62;
+    }
+
+    .form-group i {
+      color: #0a3d62;
     }
 
     .form-container input,
     .form-container select {
       width: 100%;
       padding: 10px;
-      margin-top: 5px;
-      border-radius: 5px;
+      border-radius: 6px;
       border: 1px solid #ccc;
       box-sizing: border-box;
+      font-size: 15px;
     }
 
     .form-container button {
@@ -56,8 +68,9 @@
       border: none;
       font-size: 16px;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 6px;
       font-weight: bold;
+      transition: background 0.3s;
     }
 
     .form-container button:hover {
@@ -72,27 +85,37 @@
   <div class="form-container">
     <form id="registrationForm">
 
-      <label><i class="fa-solid fa-user"></i> Name:</label>
-      <input type="text" name="name" placeholder="Enter your full name" required>
+      <div class="form-group">
+        <label for="name"><i class="fa-solid fa-user"></i> Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+      </div>
 
-      <label><i class="fa-solid fa-envelope"></i> Email (Gmail):</label>
-      <input type="email" name="email" placeholder="example@gmail.com" required>
+      <div class="form-group">
+        <label for="email"><i class="fa-solid fa-envelope"></i> Email (Gmail)</label>
+        <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+      </div>
 
-      <label><i class="fa-solid fa-lock"></i> Password:</label>
-      <input type="password" name="password" placeholder="Enter a password" required>
+      <div class="form-group">
+        <label for="password"><i class="fa-solid fa-lock"></i> Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter a password" required>
+      </div>
 
-      <label><i class="fa-solid fa-phone"></i> Contact Number:</label>
-      <input type="tel" name="contact" placeholder="e.g. 9876543210" required>
+      <div class="form-group">
+        <label for="contact"><i class="fa-solid fa-phone"></i> Contact Number</label>
+        <input type="tel" id="contact" name="contact" placeholder="e.g. 9876543210" required>
+      </div>
 
-      <label><i class="fa-solid fa-building-columns"></i> Select Exam:</label>
-      <select id="examSelect" required>
-        <option value="">-- Choose an Exam --</option>
-        <option value="NPSC">NPSC</option>
-        <option value="NSSB">NSSB</option>
-      </select>
+      <div class="form-group">
+        <label for="examSelect"><i class="fa-solid fa-building-columns"></i> Select Exam</label>
+        <select id="examSelect" required>
+          <option value="">-- Choose an Exam --</option>
+          <option value="NPSC">NPSC</option>
+          <option value="NSSB">NSSB</option>
+        </select>
+      </div>
 
-      <div id="subjectContainer" style="display: none;">
-        <label><i class="fa-solid fa-book"></i> Select Subject:</label>
+      <div class="form-group" id="subjectContainer" style="display: none;">
+        <label for="subjectSelect"><i class="fa-solid fa-book"></i> Select Subject</label>
         <select id="subjectSelect" name="subject" required>
           <option value="">-- Choose a Subject --</option>
         </select>
@@ -113,9 +136,12 @@
 
       if (examSelect.value === "NPSC") {
         subjectSelect.innerHTML += `
-          <option value="General Knowledge">General Knowledge</option>
-          <option value="Mathematics">Mathematics</option>
-          <option value="Reasoning">Reasoning</option>
+          <option value="Ancient History">Ancient History</option>
+          <option value="Medieval History">Medieval History</option>
+          <option value="Modern History">Modern History</option>
+          <option value="Indian Polity">Indian Polity</option>
+          <option value="Physical Geography">Physical Geography</option>
+          <option value="Current Affairs">Current Affairs</option>
         `;
         subjectContainer.style.display = "block";
       } else if (examSelect.value === "NSSB") {
@@ -143,10 +169,8 @@
         subject: subjectSelect.value
       };
 
-      // Save student info in localStorage
       localStorage.setItem("student", JSON.stringify(student));
 
-      // Redirect to payment page
       window.location.href = "payment.html";
     });
   </script>
