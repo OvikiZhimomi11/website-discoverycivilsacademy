@@ -2,133 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Courses | Discovery Civils Academy</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f5f7fa;
-      margin: 0;
-      padding: 0;
+      padding: 20px;
+      text-align: center;
       color: #333;
     }
-    h1, h2 {
-      text-align: center;
+
+    h1 {
       color: #0a3d62;
+      margin-bottom: 30px;
     }
-    .course-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      margin: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
+
     .course-card {
       background: #fff;
-      width: 250px;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-      overflow: hidden;
-      transition: transform 0.3s;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: left;
+      transition: transform 0.2s;
     }
+
     .course-card:hover {
       transform: translateY(-5px);
     }
-    .course-card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
+
+    .course-card h3 {
+      color: #0a3d62;
+      margin-bottom: 10px;
     }
-    .course-content {
-      padding: 15px;
-      text-align: center;
-    }
-    .course-content h3 {
-      margin: 10px 0;
-    }
-    .course-content p {
+
+    .course-card p {
       font-size: 14px;
-      margin: 10px 0;
+      line-height: 1.6;
     }
-    .course-content button {
-      background: #0a3d62;
-      color: #fff;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .course-content button:hover {
-      background: #3c6382;
-    }
-    footer {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 14px;
-      color: #666;
-      padding: 15px;
+
+    .course-card i {
+      font-size: 30px;
+      margin-bottom: 15px;
+      color: #3c6382;
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <h1 class="logo"><i class="fa-solid fa-graduation-cap"></i> Discovery Civils Academy</h1>
-      <ul class="nav-links">
-        <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
-        <li><a href="courses.html"><i class="fa-solid fa-book-open"></i> Courses</a></li>
-        <li><a href="#"><i class="fa-solid fa-phone"></i> Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <h1><i class="fa-solid fa-graduation-cap"></i> Courses Offered</h1>
 
-  <!-- Courses Section -->
-  <section>
-    <h1><i class="fa-solid fa-book-open-reader"></i> Our Courses</h1>
-    <div class="course-container">
-      <!-- Course 1 -->
-      <div class="course-card">
-        <img src="images/course1.jpg" alt="NPSC Course">
-        <div class="course-content">
-          <h3>NPSC Preparation</h3>
-          <p>Complete preparation for Nagaland Public Service Commission exams with practice papers.</p>
-          <button onclick="alert('Enroll functionality coming soon!')">Enroll Now</button>
-        </div>
-      </div>
-
-      <!-- Course 2 -->
-      <div class="course-card">
-        <img src="images/course2.jpg" alt="NSSB Course">
-        <div class="course-content">
-          <h3>NSSB Training</h3>
-          <p>Get ready for NSSB exams with comprehensive study materials and mock tests.</p>
-          <button onclick="alert('Enroll functionality coming soon!')">Enroll Now</button>
-        </div>
-      </div>
-
-      <!-- Course 3 -->
-      <div class="course-card">
-        <img src="images/course3.jpg" alt="AI Course">
-        <div class="course-content">
-          <h3>AI & Technology</h3>
-          <p>Learn Artificial Intelligence and modern tech skills from basics to advanced levels.</p>
-          <button onclick="alert('Enroll functionality coming soon!')">Enroll Now</button>
-        </div>
-      </div>
+  <div class="course-grid">
+    <div class="course-card">
+      <i class="fa-solid fa-book-open"></i>
+      <h3>NPSC Preparation</h3>
+      <p>Complete coaching for Nagaland Public Service Commission exams including Prelims and Mains.</p>
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Discovery Civils Academy | <i class="fa-solid fa-envelope"></i> contact@dca.com</p>
-  </footer>
+    <div class="course-card">
+      <i class="fa-solid fa-clipboard-list"></i>
+      <h3>NSSB Exams</h3>
+      <p>Structured classes and mock tests for Nagaland Staff Selection Board exams.</p>
+    </div>
+
+    <div class="course-card">
+      <i class="fa-solid fa-lightbulb"></i>
+      <h3>Aptitude & Reasoning</h3>
+      <p>Special classes to strengthen logical reasoning and problem-solving skills.</p>
+    </div>
+
+    <div class="course-card">
+      <i class="fa-solid fa-language"></i>
+      <h3>English & Communication</h3>
+      <p>Focused training to improve English grammar, comprehension, and writing skills for exams.</p>
+    </div>
+
+    <div class="course-card">
+      <i class="fa-solid fa-globe"></i>
+      <h3>Current Affairs</h3>
+      <p>Daily updates and analysis of important current events relevant to competitive exams.</p>
+    </div>
+  </div>
 
 </body>
 </html>
