@@ -5,43 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Discovery Civils Academy</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    /* Splash screen */
-    #splash {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: #f5f7fa;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      z-index: 1000;
-    }
-
-    #splash img {
-      max-width: 250px;
-      animation: zoomIn 1.5s ease-in-out;
-    }
-
-    @keyframes zoomIn {
-      from { transform: scale(0.7); opacity: 0.3; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    /* Hide main content initially */
-    #main-content {
-      display: none;
-    }
-
-    /* Slideshow */
+    /* Basic styling for slideshow */
     .slideshow {
       position: relative;
       max-width: 800px;
@@ -72,7 +40,7 @@
       border-radius: 5px;
     }
 
-    /* Announcement */
+    /* Announcement list */
     .ads ul {
       list-style-type: none;
       padding-left: 0;
@@ -82,77 +50,115 @@
     }
     .ads ul li a {
       text-decoration: none;
-      color: #0a3d62;
+      color: #01192a;
       font-weight: bold;
     }
     .ads ul li a:hover {
       text-decoration: underline;
     }
+    /* Logo section */
+.logo-section {
+  text-align: center;
+  margin: 30px 0 10px;
+}
+.logo-section img {
+  max-width: 600px;   /* make logo big */
+  height: auto;
+  display: inline-block;
+  border-radius: 400px;
+}
+/*header*/
+header {
+  background-color: #01192a;
+  color: white;
+  padding: 20px 20px;
+  position: sticky;
+  text-align: center;
+  top: 0;
+  z-index: 1000;
+}
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #01192a;
+  color: white;
+  position: fixed;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+}
   </style>
 </head>
 <body>
 
-  <!-- Splash Screen -->
-  <div id="splash">
-    <img src="images/logo.png" alt="Discovery Civils Academy Logo">
-    <h2>Welcome to Discovery Civils Academy</h2>
-  </div>
+ <!-- Navbar -->
+<header>
+  <nav class="navbar">
+    <h1 class="logo">
+      <h1><i class="fa-solid fa-graduation-cap"></i>Discovery Civils Academy</h1>
+    <h1>
+     <i class="fa-solid fa-graduation-cap"></i> Since 2016. Civil Service Exam Prep.  
+      Kohima ➡️ Hiekha Complex, above ICICI Building, 4th Floor, Razhü Point.
+    </h1>
 
-  <!-- Main Content -->
-  <div id="main-content">
-    <!-- Navbar -->
-    <header>
-      <nav class="navbar">
-        <h1 class="logo"><i class="fa-solid fa-graduation-cap"></i> <strong>Discovery Civils Academy</strong></h1>
-        <p>Since 2016. Civil Service Exam Prep. Kohima ➡️ Hiekha Complex, above ICICI Building, 4th Floor, Razhü Point.</p>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="test-registration.html">Mock Test</a></li>
-        </ul>
-      </nav>
-    </header>
+    <!-- Hamburger Icon -->
+    <div class="menu-icon" onclick="toggleMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </div>
 
-    <!-- Slideshow -->
-    <section class="slideshow">
-      <img src="images/logo.png" class="active" alt="Slide 1">
-      <img src="images/slide2.jpg" alt="Slide 2">
-      <img src="images/slide3.jpg" alt="Slide 3">
+    <!-- Sidebar Menu -->
+    <ul class="nav-links" id="sideMenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="test-registration.html">Mock Test</a></li>
+    </ul>
+  </nav>
+</header>
 
-      <div class="buttons">
-        <button onclick="prevSlide()">&#10094;</button>
-        <button onclick="nextSlide()">&#10095;</button>
-      </div>
-    </section>
+<script>
+  function toggleMenu() {
+    document.getElementById("sideMenu").classList.toggle("active");
+  }
+</script>
 
-    <!-- Announcements -->
-    <section class="ads">
-      <h2><i class="fa-solid fa-bullhorn"></i> Upcoming Announcements</h2>
-      <ul>
-        <li><a href="mocktest-admission.html">🎓🗓️ Comprehensive Subject-Wise Mock Test Schedule for NPSC Prelims 2025! – Apply Now!</a></li>
-        <li><a href="computer-courses.html">🤖 New AI Courses launching soon!</a></li>
-        <li><a href="test-registration.html">💻 Online Mock Tests Available – Register & Apply for Mock Tests!</a></li>
-        <li><a href="studyspace.html">🛋️ Quiet and Soundproof Space for Preparation</a></li>
-        <li><a href="admission.html">📢 Admissions Open for all exams prep – Join Now!</a></li>
-      </ul>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-      <p>&copy; 2025 Discovery Civils Academy | <i class="fa-solid fa-school"></i> Empowering Students</p>
-    </footer>
-  </div>
+  <!-- Logo Section -->
+  <section class="logo-section">
+    <img src="images/logo.png" alt="Institution Logo">
+  </section>
+
+  <!-- Slideshow -->
+  <section class="slideshow">
+    <img src="images/images.png" class="active" alt="Slide 1">
+    <img src="images/slide2.jpg" alt="Slide 2">
+    <img src="images/slide3.jpg" alt="Slide 3">
+
+    <div class="buttons">
+      <button onclick="prevSlide()">&#10094;</button>
+      <button onclick="nextSlide()">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- About / Ads Section -->
+  <section class="ads">
+    <h2><i class="fa-solid fa-bullhorn"></i> Upcoming Announcements</h2>
+    <ul>
+      <li><a href="mocktest-admission.html">🎓🗓️ Comprehensive Subject-Wise Mock Test Schedule for NPSC Prelims 2025! – Apply Now!</a></li>
+      <li><a href="computer-courses.html">🤖 New AI Courses launching soon!</a></li>
+      <li><a href="test-registration.html">💻 Online Mock Tests Available – Register & Apply for Mock Tests!</a></li>
+      <li><a href="studyspace.html">Quiet and sound space for preparation</a></li>
+      <li><a href="admission.html">📢 Admissions Open for all exams prep – Join Now!</a></li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Discovery Civils Academy | <i class="fa-solid fa-school"></i> Empowering Students</p>
+  </footer>
 
   <!-- Scripts -->
   <script>
-    // Splash screen timeout
-    window.onload = () => {
-      setTimeout(() => {
-        document.getElementById("splash").style.display = "none";
-        document.getElementById("main-content").style.display = "block";
-      }, 3000); // 3 seconds
-    };
-
     // Slideshow
     const slides = document.querySelectorAll(".slideshow img");
     let currentIndex = 0;
