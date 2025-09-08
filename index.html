@@ -1,14 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Discovery Civils Academy</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* Basic styling for slideshow */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Splash screen */
+    #splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #f5f7fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    #splash img {
+      max-width: 250px;
+      animation: zoomIn 1.5s ease-in-out;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0.3; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Hide main content initially */
+    #main-content {
+      display: none;
+    }
+
+    /* Slideshow */
     .slideshow {
       position: relative;
       max-width: 800px;
@@ -39,7 +72,7 @@
       border-radius: 5px;
     }
 
-    /* Announcement list */
+    /* Announcement */
     .ads ul {
       list-style-type: none;
       padding-left: 0;
@@ -59,50 +92,67 @@
 </head>
 <body>
 
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <h1 class="logo"><i class="fa-solid fa-graduation-cap"><strong></i> Discovery Civils Academy</h1></strong>
-      <p>Since 2016.Civil Service Exam Prep.
-        Kohima➡️ Hiekha Complex, above ICICI Building, 4th Floor, Razhü Point.</p>
-      <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="courses.html">Courses</a></li>
-            <li><a href="test-registration.html">Mock Test</a></li>
+  <!-- Splash Screen -->
+  <div id="splash">
+    <img src="images/logo.png" alt="Discovery Civils Academy Logo">
+    <h2>Welcome to Discovery Civils Academy</h2>
+  </div>
+
+  <!-- Main Content -->
+  <div id="main-content">
+    <!-- Navbar -->
+    <header>
+      <nav class="navbar">
+        <h1 class="logo"><i class="fa-solid fa-graduation-cap"></i> <strong>Discovery Civils Academy</strong></h1>
+        <p>Since 2016. Civil Service Exam Prep. Kohima ➡️ Hiekha Complex, above ICICI Building, 4th Floor, Razhü Point.</p>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="test-registration.html">Mock Test</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Slideshow -->
+    <section class="slideshow">
+      <img src="images/logo.png" class="active" alt="Slide 1">
+      <img src="images/slide2.jpg" alt="Slide 2">
+      <img src="images/slide3.jpg" alt="Slide 3">
+
+      <div class="buttons">
+        <button onclick="prevSlide()">&#10094;</button>
+        <button onclick="nextSlide()">&#10095;</button>
+      </div>
+    </section>
+
+    <!-- Announcements -->
+    <section class="ads">
+      <h2><i class="fa-solid fa-bullhorn"></i> Upcoming Announcements</h2>
+      <ul>
+        <li><a href="mocktest-admission.html">🎓🗓️ Comprehensive Subject-Wise Mock Test Schedule for NPSC Prelims 2025! – Apply Now!</a></li>
+        <li><a href="computer-courses.html">🤖 New AI Courses launching soon!</a></li>
+        <li><a href="test-registration.html">💻 Online Mock Tests Available – Register & Apply for Mock Tests!</a></li>
+        <li><a href="studyspace.html">🛋️ Quiet and Soundproof Space for Preparation</a></li>
+        <li><a href="admission.html">📢 Admissions Open for all exams prep – Join Now!</a></li>
       </ul>
-    </nav>
-  </header>
+    </section>
 
-  <!-- Slideshow -->
-  <section class="slideshow">
-    <img src="images/images.png" class="active" alt="Slide 1">
-    <img src="images/slide2.jpg" alt="Slide 2">
-    <img src="images/slide3.jpg" alt="Slide 3">
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Discovery Civils Academy | <i class="fa-solid fa-school"></i> Empowering Students</p>
+    </footer>
+  </div>
 
-    <div class="buttons">
-      <button onclick="prevSlide()">&#10094;</button>
-      <button onclick="nextSlide()">&#10095;</button>
-    </div>
-  </section>
-
-  <!-- About / Ads Section -->
-  <section class="ads">
-    <h2><i class="fa-solid fa-bullhorn"></i> Upcoming Announcements</h2>
-    <ul>
-      <li><a href="mocktest-admission.html">🎓🗓️ Comprehensive Subject-Wise Mock Test Schedule for NPSC Prelims 2025! – Apply Now!</a></li>
-      <li><a href="computer-courses.html">🤖 New AI Courses launching soon!</a></li>
-      <li><a href="test-registration.html">💻 Online Mock Tests Available – Register & Apply for Mock Tests!</a></li>
-      <li><a href="studyspace.html">quite and sounded space for preparation</a></li>
-      <li><a href="admission.html">📢 Admissions Open for all exams prep – Join Now!</a></li>
-    </ul>
-  </section>
-
-  <!-- Footer -->
-<footer>
-    <p>&copy; 2025 Discovery Civils Academy | <i class="fa-solid fa-school"></i> Empowering Students</p>
-  </footer>
   <!-- Scripts -->
   <script>
+    // Splash screen timeout
+    window.onload = () => {
+      setTimeout(() => {
+        document.getElementById("splash").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+      }, 3000); // 3 seconds
+    };
+
     // Slideshow
     const slides = document.querySelectorAll(".slideshow img");
     let currentIndex = 0;

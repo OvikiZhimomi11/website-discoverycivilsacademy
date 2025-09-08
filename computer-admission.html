@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admission Form | Discovery Civils Academy</title>
+  <title>Computer Courses Admission | Discovery Civils Academy</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -78,7 +78,7 @@
 </head>
 <body>
 
-  <h1><i class="fa-solid fa-user-graduate"></i> Admission Form</h1>
+  <h1><i class="fa-solid fa-computer"></i> Computer Course Admission</h1>
 
   <div class="form-container">
     <form id="admissionForm">
@@ -92,19 +92,17 @@
       <label><i class="fa-solid fa-phone"></i> Contact Number:</label>
       <input type="tel" name="contact" placeholder="e.g. 9876543210" required>
 
-      <label><i class="fa-solid fa-building-columns"></i> Select Course:</label>
-      <select name="course" required title="Select Course">
-        <option value="">-- Choose a Course --</option>
-        <option value="NPSC Preparation">NPSC Preparation</option>
-        <option value="NSSB Exams">NSSB Exams</option>
-        <option value="Aptitude & Reasoning">Aptitude & Reasoning</option>
-        <option value="English & Communication">English & Communication</option>
-        <option value="Current Affairs">Current Affairs</option>
-        <option value="Computer Courses">Computer Courses</option>
+      <label><i class="fa-solid fa-laptop-code"></i> Select Computer Course:</label>
+      <select name="course" required title="Select Computer Course">
+        <option value="">-- Choose a Computer Course --</option>
+        <option value="DCA">DCA</option>
+        <option value="Graphics Designing">Graphics Designing</option>
+        <option value="Coding">Coding</option>
+        <option value="Machine Learning">Machine Learning</option>
       </select>
 
       <label><i class="fa-solid fa-calendar-days"></i> Preferred Batch Timing:</label>
-      <select name="batch" required title="Preferred Batch Timing">
+      <select name="batch" required title="Select Batch Timing">
         <option value="">-- Choose Batch --</option>
         <option value="Morning">Morning (9 AM – 12 PM)</option>
         <option value="Afternoon">Afternoon (1 PM – 4 PM)</option>
@@ -134,8 +132,8 @@
         notes: this.notes.value
       };
 
-      // Save student admission info in localStorage (temporary demo storage)
-      localStorage.setItem("admission", JSON.stringify(admissionData));
+      // Save student admission info in localStorage
+      localStorage.setItem("computerAdmission", JSON.stringify(admissionData));
 
       // Show success message
       document.getElementById("successMessage").style.display = "block";
