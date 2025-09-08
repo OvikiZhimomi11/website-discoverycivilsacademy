@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Discovery Civils Academy</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #0a3d62;
+      margin-bottom: 20px;
+    }
+
+    .contact-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .contact-form, .contact-info {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .contact-form label {
+      font-weight: bold;
+      margin-top: 10px;
+      display: block;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .contact-form button {
+      margin-top: 15px;
+      padding: 12px;
+      width: 100%;
+      background: #0a3d62;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background: #3c6382;
+    }
+
+    .contact-info h2 {
+      margin-top: 0;
+      color: #0a3d62;
+    }
+
+    .contact-info p {
+      margin: 10px 0;
+    }
+
+    .map {
+      margin-top: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1><i class="fa-solid fa-envelope"></i> Contact Us</h1>
+
+  <div class="contact-container">
+    <!-- Contact Form -->
+    <div class="contact-form">
+      <h2>Send us a message</h2>
+      <form action="https://formspree.io/f/yourFormID" method="POST">
+  <label for="name">Full Name</label>
+  <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="_replyto" placeholder="Enter your email" required>
+
+  <label for="message">Message</label>
+  <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+
+  <button type="submit">Send Message</button>
+</form>
+    </div>
+      
+
+    <!-- Contact Information -->
+    <div class="contact-info">
+      <h2>Get in touch</h2>
+      <p><i class="fa-solid fa-location-dot"></i> Hiekha Complex, above ICICI Building, 4th Floor, Razhü Point, Kohima</p>
+      <p><i class="fa-solid fa-phone"></i> +91-9876543210</p>
+      <p><i class="fa-solid fa-envelope"></i> info@discoverycivilsacademy.com</p>
+
+      <div class="map">
+        <!-- Google Maps Embed -->
