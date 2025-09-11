@@ -6,217 +6,45 @@
   <title>Contact Us | Discovery Civils Academy</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <style>
-    /* General Page Styles */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #f0f4f8, #e6ebf1);
-  margin: 0;
-  padding: 20px;
-  color: #333;
-}
-
-/* Page Title */
-h1 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #0a3d62;
-  margin-bottom: 30px;
-}
-
-/* Contact Container */
-.contact-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
-  padding: 20px;
-}
-
-/* Contact Form */
-.contact-form {
-  background: #fff;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-}
-
-.contact-form label {
-  display: block;
-  font-weight: 600;
-  margin: 12px 0 6px;
-  color: #0a3d62;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 15px;
-  margin-bottom: 15px;
-  transition: 0.3s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: #0a3d62;
-  box-shadow: 0 0 8px rgba(10, 61, 98, 0.2);
-  outline: none;
-}
-
-.contact-form button {
-  width: 100%;
-  padding: 14px;
-  background: #0a3d62;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.contact-form button:hover {
-  background: #145a91;
-}
-
-/* Status Messages */
-#form-status {
-  margin-top: 12px;
-  padding: 10px;
-  border-radius: 6px;
-  font-weight: bold;
-  display: none;
-}
-
-#form-status.success {
-  display: block;
-  background: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-}
-
-#form-status.error {
-  display: block;
-  background: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-}
-
-/* Contact Info */
-.contact-info {
-  background: #fff;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-}
-
-.contact-info h2 {
-  margin-bottom: 15px;
-  color: #0a3d62;
-}
-
-.contact-info p {
-  font-size: 15px;
-  margin: 8px 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Icons Styling */
-.contact-info i {
-  color: #0a3d62;
-  font-size: 18px;
-}
-
-/* Google Map Styling */
-.map iframe {
-  width: 100%;
-  height: 250px;
-  border: none;
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .contact-container {
-    grid-template-columns: 1fr;
-  }
-}
-  </style>
 </head>
 <body>
 
-  <h1><i class="fa-solid fa-envelope"></i> Contact Us</h1>
+  <h1>Contact Us</h1>
+  <p class="page-subtitle">Fill out the form and our team will get back to you within 24 hours.</p>
 
   <div class="contact-container">
-   <!-- modify this form HTML and place wherever you want your form -->
-<form
-  action="https://formspree.io/f/mnnbwjlw"
-  method="POST"
-></form>
-      <form id="contactForm" action="https://formspree.io/f/mnnbwjlw" method="POST">
-  <label>
-    Your Name:
-    <input type="text" name="name" placeholder="Enter your name" required>
-  </label>
-  <label>
-    Your Email:
-    <input type="email" name="email" placeholder="Enter your email" required>
-  </label>
-  <label>
-    Your Message:
-    <textarea name="message" placeholder="Write your message here..." required></textarea>
-  </label>
-  <button type="submit">Send</button>
-</form>
-
-<!-- Success / Error Messages -->
-<p id="form-status" style="margin-top:10px; font-weight:bold;"></p>
-
-<script>
-  const form = document.getElementById("contactForm");
-  const status = document.getElementById("form-status");
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const data = new FormData(form);
-
-    try {
-      let response = await fetch(form.action, {
-        method: form.method,
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (response.ok) {
-        status.textContent = "✅ Thanks! Your message has been sent successfully.";
-        status.style.color = "green";
-        form.reset();
-      } else {
-        status.textContent = "⚠️ Oops! Something went wrong. Please try again.";
-        status.style.color = "red";
-      }
-    } catch (error) {
-      status.textContent = "⚠️ Network error. Please check your connection.";
-      status.style.color = "red";
-    }
-  });
-</script>
-
-    <!-- Contact Information -->
+    <!-- Left Side - Info -->
     <div class="contact-info">
-      <h2>Get in touch</h2>
+      <h2>Discovery Civils Academy</h2>
       <p><i class="fa-solid fa-location-dot"></i> Hiekha Complex, above ICICI Building, 4th Floor, Razhü Point, Kohima</p>
       <p><i class="fa-solid fa-phone"></i> +91-9876543210</p>
       <p><i class="fa-solid fa-envelope"></i> info@discoverycivilsacademy.com</p>
 
-      <div class="map">
-        <!-- Google Maps Embed -->
+      <div class="social">
+        <a href="https://www.instagram.com/discoverycivils.academy/?utm_source=ig_embed&ig_rid=3e13115c-5d7f-4d4a-9d90-667484d8996d" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://t.me/DiscoveryCivilsAcademy?fbclid=PAZXh0bgNhZW0CMTEAAad1-nYZLf8nMLLkyEKX3P6-IywUv9x0zlI9HTXQJxK7b7P7xOarLc-1RSL_LA_aem_D8b8wk5Hv7RfzLoXVTEvXA" title="Telegram" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+      </div>
+    </div>
+
+    <!-- Right Side - Form -->
+    <div class="contact-form">
+      <form action="https://formspree.io/f/mnnbwjlw" method="POST">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="+91-9876543210">
+
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
