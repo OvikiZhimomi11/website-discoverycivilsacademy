@@ -501,6 +501,61 @@ p.page-subtitle {
     text-align: center;
   }
 }
+/* Dark mode */
+.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+.dark-mode header,
+.dark-mode footer {
+  background-color: #222;
+}
+.dark-mode a {
+  color: #90caf9;
+}
+/* Sidebar styles */
+.nav-links {
+  position: fixed;
+  top: 0;
+  left: -250px; /* hidden off screen */
+  width: 250px;
+  height: 100%;
+  background-color: #01192a;
+  padding-top: 60px;
+  transition: left 0.3s ease; /* animation */
+  flex-direction: column;
+  list-style: none;
+  z-index: 2000;
+}
+
+.nav-links li {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.nav-links li a:hover {
+  text-decoration: underline;
+}
+
+/* When active → slide in */
+.nav-links.active {
+  left: 0;
+}
+/* Close button inside sidebar */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+}
 
 /* Animations */
 @keyframes fadeIn {
