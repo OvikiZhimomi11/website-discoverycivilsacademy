@@ -204,12 +204,74 @@ footer {
       showSlide(currentIndex);
     }
 
-    function nextSlide() {
-      currentIndex++;
-      if (currentIndex >= slides.length) currentIndex = 0;
-      showSlide(currentIndex);
-    }
-  </script>
+  function nextSlide() {
+    currentIndex++;
+    if (currentIndex >= slides.length) currentIndex = 0;
+    showSlide(currentIndex);
+  }
+</script>
+
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  document.getElementById("registerForm").addEventListener("submit", async function(e){
+    e.preventDefault();
+
+  let student = {
+    name: this.name.value,
+    email: this.email.value,
+    course: this.course.value,
+    amount: this.amount.value
+  };
+
+  // 1️⃣ Create order from backend
+  const res = await fetch("http://localhost:5000/create-order", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(student)
+  });
+
+  const data = await res.json();
+
+  // 2️⃣ Open Razorpay Checkout
+  var options = {
+    key: data.key,
+    amount: student.amount * 100,
+    currency: "INR",
+    name: "Discovery Civils Academy",
+    description: "Mock Test Registration",
+    order_id: data.orderId,
+    handler: async function (response) {
+      // 3️⃣ Verify payment
+      const verifyRes = await fetch("http://localhost:5000/verify-payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          order_id: response.razorpay_order_id,
+          payment_id: response.razorpay_payment_id,
+          signature: response.razorpay_signature,
+          student: student
+        })
+      });
+
+      const result = await verifyRes.json();
+      if(result.success){
+        alert("✅ Registration successful!");
+        window.location.href = "mocktest.html";
+      } else {
+        alert("❌ Payment failed");
+      }
+    },
+    prefill: {
+      name: student.name,
+      email: student.email
+    },
+    theme: { color: "#0a3d62" }
+  };
+  var rzp1 = new Razorpay(options);
+  rzp1.open();
+});
+</script>
 
 </body>
 </html>
