@@ -3,91 +3,136 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register & Pay | Discovery Civils Academy</title>
+  <title>Payment | Discovery Civils Academy</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #eef5f9, #dceefc);
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 30px 0 10px;
+      font-size: 2rem;
+      color: #0a3d62;
+    }
+
+    .payment-container {
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .payment-container h2 {
+      text-align: center;
+      color: #004466;
+      margin-bottom: 20px;
+    }
+
+    .student-details {
+      background: #f9f9f9;
+      border-left: 5px solid #0a3d62;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .student-details p {
+      margin: 8px 0;
+    }
+
+    .pay-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(90deg, #004466, #0077b6);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .pay-btn:hover {
+      background: #f39c12;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-  <h1>Register for Mock Test</h1>
+  <h1>Payment Portal</h1>
 
-  <form id="registerForm">
-    <label for="name">Full Name</label><br>
-    <input type="text" id="name" name="name" placeholder="Enter your full name" required><br><br>
-
-    <label for="email">Email</label><br>
-    <input type="email" id="email" name="email" placeholder="Enter your email" required><br><br>
-
-    <label for="course">Select Course</label><br>
-    <select id="course" name="course" required>
-      <option value="DCA">DCA</option>
-      <option value="Graphics">Graphics Designing</option>
-      <option value="Coding">Coding</option>
-      <option value="ML">Machine Learning</option>
-    </select><br><br>
-
-    <label for="amount">Amount (INR)</label><br>
-    <input type="number" id="amount" name="amount" value="500" readonly><br><br>
-
-    <button type="submit">Proceed to Payment</button>
-  </form>
+  <div class="payment-container">
+    <h2>Confirm Your Details</h2>
+    <div class="student-details" id="studentDetails"></div>
+    <button class="pay-btn" id="payBtn">Proceed to Payment</button>
+  </div>
 
   <script>
-    document.getElementById("registerForm").addEventListener("submit", async function(e) {
-      e.preventDefault();
+    // Fetch student details from localStorage
+    const studentData = JSON.parse(localStorage.getItem("studentData"));
+    const studentDetailsDiv = document.getElementById("studentDetails");
 
-      let student = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        course: document.getElementById("course").value,
-        amount: document.getElementById("amount").value
-      };
+    if (studentData) {
+      studentDetailsDiv.innerHTML = `
+        <p><strong>Name:</strong> ${studentData.name}</p>
+        <p><strong>Email:</strong> ${studentData.email}</p>
+        <p><strong>Category:</strong> ${studentData.category}</p>
+        <p><strong>Option:</strong> ${studentData.subcategory}</p>
+        <p><strong>Amount:</strong> ₹500</p>
+      `;
+    } else {
+      studentDetailsDiv.innerHTML = "<p style='color:red;'>No student data found. Please register again.</p>";
+      document.getElementById("payBtn").style.display = "none";
+    }
 
-      // Call backend to create Razorpay order
-      const res = await fetch("http://localhost:5000/create-order", {
+    // Handle Razorpay Payment
+    document.getElementById("payBtn").addEventListener("click", async function () {
+      // Normally you’d request orderId from backend:
+      const orderResponse = await fetch("http://localhost:5000/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(student)
+        body: JSON.stringify({ amount: 500, student: studentData })
       });
-
-      const data = await res.json();
+      const orderData = await orderResponse.json();
 
       var options = {
-        key: data.key,  // from backend
-        amount: student.amount * 100,
+        key: orderData.key, 
+        amount: 500 * 100,
         currency: "INR",
         name: "Discovery Civils Academy",
-        description: "Mock Test Registration",
-        order_id: data.orderId,
+        description: `${studentData.category} - ${studentData.subcategory}`,
+        order_id: orderData.orderId,
         handler: async function (response) {
-          // Verify payment
-          const verifyRes = await fetch("http://localhost:5000/verify-payment", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              order_id: response.razorpay_order_id,
-              payment_id: response.razorpay_payment_id,
-              signature: response.razorpay_signature,
-              student: student
-            })
-          });
-
-          const result = await verifyRes.json();
-          if(result.success){
-            alert("✅ Payment Successful! Redirecting...");
-            window.location.href = "mock-test.html"; // unlock test page
-          } else {
-            alert("❌ Payment verification failed!");
-          }
+          alert("✅ Payment Successful!");
+          window.location.href = "success.html"; // success page after payment
         },
-        prefill: { 
-          name: student.name, 
-          email: student.email 
+        prefill: {
+          name: studentData.name,
+          email: studentData.email
         },
-        theme: { color: "#0a3d62" }
+        theme: {
+          color: "#0a3d62"
+        }
       };
-
-      var rzp1 = new Razorpay(options);
-      rzp1.open();
+      var rzp = new Razorpay(options);
+      rzp.open();
     });
   </script>
 </body>

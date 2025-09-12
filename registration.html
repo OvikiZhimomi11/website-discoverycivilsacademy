@@ -3,49 +3,181 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unified Registration | Discovery Civils Academy</title>
+  <title>Online Registration | Discovery Civils Academy</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #eef5f9, #dceefc);
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 30px 0 10px;
+      font-size: 2rem;
+      color: #0a3d62;
+    }
+
+    p.subtitle {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #666;
+      font-size: 1rem;
+    }
+
+    /* Flexbox layout */
+    .main-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Left Side - Advertisement */
+    .advertisement {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .advertisement img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    /* Right Side - Form */
+    .form-container {
+      flex: 1;
+      max-width: 480px;
+      padding: 35px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #004466;
+    }
+
+    .form-container label {
+      font-weight: bold;
+      display: block;
+      margin: 12px 0 6px;
+      color: #333;
+    }
+
+    .form-container input,
+    .form-container select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      transition: 0.3s;
+    }
+
+    .form-container input:focus,
+    .form-container select:focus {
+      border-color: #0a3d62;
+      box-shadow: 0 0 6px rgba(10, 61, 98, 0.2);
+      outline: none;
+    }
+
+    .form-container button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #004466, #0077b6);
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .form-container button:hover {
+      background: #f39c12;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive for mobile */
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .advertisement, .form-container {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Register for Admission, Mock Test, or Courses</h1>
+  <h1>Discovery Civils Academy</h1>
+  <p class="subtitle">Register once and continue to payment</p>
 
-  <form id="registerForm">
-    <input type="text" id="name" placeholder="Full Name" required><br>
-    <input type="email" id="email" placeholder="Email" required><br>
+  <div class="main-container">
+    <!-- Left Side - Info -->
+    <div class="advertisement">
+      <img src="images/ads.png" alt="advertisement">
+    </div>
 
-    <!-- Main Category -->
-    <label for="category">Select Category:</label>
-    <select id="category" required>
-      <option value="">-- Select --</option>
-      <option value="admission">Admission</option>
-      <option value="mocktest">Mock Test</option>
-      <option value="course">Courses</option>
-    </select><br><br>
+    <!-- Right Side - Form -->
+    <div class="form-container">
+      <h2>Registration Form</h2>
+      <form id="registerForm">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" required placeholder="Enter your full name">
 
-    <!-- Subcategory (changes dynamically) -->
-    <label for="subcategory">Select Option:</label>
-    <select id="subcategory" required>
-      <option value="">-- Select a category first --</option>
-    </select><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required placeholder="Enter your email">
 
-    <label for="amount">Amount (INR):</label>
-    <input type="number" id="amount" value="500" readonly placeholder="Amount" title="Amount to pay"><br>
-    <button type="submit">Proceed to Payment</button>
-  </form>
+        <label for="category">Select Category:</label>
+        <select id="category" required>
+          <option value="">-- Select --</option>
+          <option value="admission">Admission</option>
+          <option value="mocktest">Mock Test</option>
+          <option value="course">Courses</option>
+        </select>
+
+        <label for="subcategory">Select Option:</label>
+        <select id="subcategory" required>
+          <option value="">-- Select a category first --</option>
+        </select>
+
+        <button type="submit">Submit & Proceed to Payment</button>
+      </form>
+    </div>
+  </div>
 
   <script>
     const categorySelect = document.getElementById("category");
     const subcategorySelect = document.getElementById("subcategory");
 
-    // Sub-options mapping
     const optionsMap = {
       admission: ["NPSC", "NSSB", "Computer"],
       mocktest: ["Aptitude", "English", "Current Affairs"],
       course: ["DCA", "Graphics Designing", "Coding", "Machine Learning"]
     };
 
-    // Update sub-options when main category changes
     categorySelect.addEventListener("change", () => {
       const category = categorySelect.value;
       subcategorySelect.innerHTML = "<option value=''>-- Select --</option>";
@@ -59,66 +191,16 @@
       }
     });
 
-    document.getElementById("registerForm").addEventListener("submit", async function(e){
+    document.getElementById("registerForm").addEventListener("submit", function(e){
       e.preventDefault();
-
-      let student = {
+      const student = {
         name: document.getElementById("name").value,
         email: document.getElementById("email").value,
         category: categorySelect.value,
-        subcategory: subcategorySelect.value,
-        amount: document.getElementById("amount").value
+        subcategory: subcategorySelect.value
       };
-
-      // Create order
-      const res = await fetch("http://localhost:5000/create-order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(student)
-      });
-
-      const data = await res.json();
-
-      var options = {
-        key: data.key,
-        amount: student.amount * 100,
-        currency: "INR",
-        name: "Discovery Civils Academy",
-        description: student.category + " - " + student.subcategory,
-        order_id: data.orderId,
-        handler: async function (response) {
-          // Verify payment
-          const verifyRes = await fetch("http://localhost:5000/verify-payment", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              order_id: response.razorpay_order_id,
-              payment_id: response.razorpay_payment_id,
-              signature: response.razorpay_signature,
-              student: student
-            })
-          });
-
-          const result = await verifyRes.json();
-          if(result.success){
-            alert("✅ Payment Successful!");
-            // Redirect based on category
-            if(student.category === "admission"){
-              window.location.href = "admission.html";
-            } else if(student.category === "mocktest"){
-              window.location.href = "mock-test.html";
-            } else {
-              window.location.href = "courses.html";
-            }
-          } else {
-            alert("❌ Payment verification failed!");
-          }
-        },
-        prefill: { name: student.name, email: student.email },
-        theme: { color: "#0a3d62" }
-      };
-      var rzp1 = new Razorpay(options);
-      rzp1.open();
+      localStorage.setItem("studentData", JSON.stringify(student));
+      window.location.href = "payment.html";
     });
   </script>
 </body>

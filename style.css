@@ -5,11 +5,14 @@
   box-sizing: border-box;
 }
 
+/* Body */
 body {
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(to right, #f4f9fc, #eef5f9);
   color: #333;
   line-height: 1.6;
+  margin: 0;
+  padding: 40px;
 }
 
 /* Navbar */
@@ -43,7 +46,7 @@ body {
 .nav-links {
   position: fixed;
   top: 0;
-  right: -250px; /* hidden by default */
+  left: -250px; /* hidden by default */
   width: 250px;
   height: 100%;
   background: #01192a;
@@ -51,10 +54,12 @@ body {
   padding: 60px 20px;
   transition: 0.3s ease;
   z-index: 2000;
+  flex-direction: column;
 }
 
 .nav-links li {
   margin: 20px 0;
+  text-align: center;
 }
 
 .nav-links a {
@@ -64,9 +69,23 @@ body {
   display: block;
 }
 
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
 /* Show Menu */
 .nav-links.active {
-  right: 0;
+  left: 0;
+}
+
+/* Close button inside sidebar */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
 }
 
 /* Slideshow */
@@ -136,6 +155,84 @@ body {
   margin: 8px 0;
   font-size: 1.1rem;
 }
+
+.ads ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.ads ul li {
+  margin: 10px 0;
+}
+
+.ads ul li a {
+  text-decoration: none;
+  color: #0a3d62;
+  background: #e3f2fd;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: inline-block;
+  transition: background 0.3s, color 0.3s;
+}
+
+.ads ul li a:hover {
+  background: #0a3d62;
+  color: #fff;
+}
+/* Ads Section with Images */
+.ads {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.ads h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #01192a;
+}
+
+.ads-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.ad-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.ad-card:hover {
+  transform: translateY(-5px);
+}
+
+.ad-card img {
+  max-width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.ad-card a {
+  display: block;
+  font-weight: bold;
+  color: #01192a;
+  text-decoration: none;
+}
+
+.ad-card a:hover {
+  color: #145a91;
+  text-decoration: underline;
+}
+
 
 /* Registration Form */
 .form-container {
@@ -277,39 +374,10 @@ body {
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
-.fade-slide {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  transition: opacity 0.6s ease-in-out;
-  opacity: 1;
-}
-.fade-out {
-  opacity: 0;
-}
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 300px; /* adjust as needed */
-  margin: 0 auto; /* center the form on page */
-}
 
-.qr-container {
-  display: flex;
-  justify-content: center; /* horizontal center */
-  margin-top: 20px; /* space from button */
-}
-
-.qr-container img {
-  width: 150px; /* adjust size */
-  height: 150px;
-  object-fit: contain;
-  border: 2px solid #0a3d62;
-  border-radius: 10px;
-}
+/* Payment Success */
 .payment-success {
-  display: none; /* hidden by default */
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -320,7 +388,7 @@ form {
 
 .tick-container {
   font-size: 120px;
-  color: #28a745; /* green */
+  color: #28a745;
   animation: pop 0.6s ease-out;
   margin-bottom: 20px;
 }
@@ -340,39 +408,36 @@ form {
   font-size: 18px;
   color: #333;
 }
-.ads ul {
-  list-style-type: none;
-  padding: 0;
+
+/* QR Code */
+.qr-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-.ads ul li {
-  margin: 10px 0;
+.qr-container img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border: 2px solid #0a3d62;
+  border-radius: 10px;
 }
 
-.ads ul li a {
-  text-decoration: none;
-  color: #0a3d62;
-  background: #e3f2fd;
-  padding: 10px 15px;
-  border-radius: 5px;
-  display: inline-block;
-  transition: background 0.3s, color 0.3s;
+/* Fade Slide */
+.fade-slide {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  transition: opacity 0.6s ease-in-out;
+  opacity: 1;
 }
 
-.ads ul li a:hover {
-  background: #0a3d62;
-  color: #fff;
-}
-/* General Page Styles */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f7fa;
-  margin: 0;
-  padding: 40px;
-  color: #333;
+.fade-out {
+  opacity: 0;
 }
 
-/* Page Title */
+/* Contact Page */
 h1 {
   text-align: center;
   font-size: 2.2rem;
@@ -387,7 +452,6 @@ p.page-subtitle {
   margin-bottom: 30px;
 }
 
-/* Contact Container */
 .contact-container {
   max-width: 1100px;
   margin: 0 auto;
@@ -399,7 +463,6 @@ p.page-subtitle {
   overflow: hidden;
 }
 
-/* Left Side - Info */
 .contact-info {
   background: linear-gradient(135deg, #01192a, #145a91);
   color: #fff;
@@ -438,7 +501,6 @@ p.page-subtitle {
   color: #f1c40f;
 }
 
-/* Right Side - Form */
 .contact-form {
   padding: 40px 30px;
   background: #fff;
@@ -489,7 +551,6 @@ p.page-subtitle {
   background: #145a91;
 }
 
-/* Responsive */
 @media (max-width: 900px) {
   .contact-container {
     grid-template-columns: 1fr;
@@ -501,60 +562,20 @@ p.page-subtitle {
     text-align: center;
   }
 }
+
 /* Dark mode */
 .dark-mode {
   background-color: #121212;
   color: white;
 }
+
 .dark-mode header,
 .dark-mode footer {
   background-color: #222;
 }
+
 .dark-mode a {
   color: #90caf9;
-}
-/* Sidebar styles */
-.nav-links {
-  position: fixed;
-  top: 0;
-  left: -250px; /* hidden off screen */
-  width: 250px;
-  height: 100%;
-  background-color: #01192a;
-  padding-top: 60px;
-  transition: left 0.3s ease; /* animation */
-  flex-direction: column;
-  list-style: none;
-  z-index: 2000;
-}
-
-.nav-links li {
-  margin: 20px 0;
-  text-align: center;
-}
-
-.nav-links li a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-}
-
-.nav-links li a:hover {
-  text-decoration: underline;
-}
-
-/* When active → slide in */
-.nav-links.active {
-  left: 0;
-}
-/* Close button inside sidebar */
-.close-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 25px;
-  color: white;
-  cursor: pointer;
 }
 
 /* Animations */
