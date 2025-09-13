@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Space</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Your Study Space</h1>
+        <p>Your personal zone for focused learning</p>
+    </header>
+
+    <main>
+        <section id="study-tips">
+            <h2>Study Tips</h2>
+            <ul>
+                <li>Create a dedicated study area.</li>
+                <li>Set specific goals for each study session.</li>
+                <li>Take regular breaks to stay focused.</li>
+                <li>Use active learning techniques.</li>
+                <li>Stay organized with a planner or digital tools.</li>
+            </ul>
+            <div class="video-container">
+                <video controls>
+                    <source src="images/studyspace.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+
+        <section id="resources">
+            <h2>Book Your Space Today</h2>
+            <p>Monthly Tariff:</p>
+            <ul class="tariff">
+                <li>Half day shift: ₹799/-</li>
+                <li>Full day shift: ₹1,399/-</li>
+            </ul>
+            <p>Resources Included:</p>
+            <ul class="resources-list">
+                <li>Separate Lockers</li>
+                <li>Charging Ports</li>
+                <li>Free Wifi</li>
+                <li>Mock Test Papers</li>
+                <li>Study Materials</li>
+                <li>Reference Books</li>
+            </ul>
+              <h2>Register Now!</h2>
+        <a href="registration.html" class="register-button">Register</a>
+        </section>
+    </main>
+    <style>
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f0f4f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #4a90e2, #50e3c2);
+    color: white;
+    text-align: center;
+    padding: 3rem 1rem;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Main sections */
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+section {
+    background: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+section:hover {
+    transform: translateY(-5px);
+}
+
+/* Section headings */
+section h2 {
+    color: #4a90e2;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    position: relative;
+}
+
+section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #50e3c2;
+    margin-top: 5px;
+    border-radius: 2px;
+}
+
+/* Lists */
+ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+ul li {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.tariff li {
+    font-weight: bold;
+    color: #e94e77;
+}
+
+.resources-list li {
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.resources-list li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #4a90e2;
+}
+
+/* Video styling */
+.video-container {
+    margin-top: 1.5rem;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+video {
+    width: 100%;
+    display: block;
+}
+.register-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #4a90e2;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+}
+
+    </style>
+</body>
+</html>

@@ -69,7 +69,7 @@
 }
 /*header*/
 header {
-  background-color: #01192a,#145a91;
+  background-attachment: fixed linear-gradient(135deg, #4a90e2, #50e3c2);
   color: white;
   padding: 20px 20px;
   position: relative;
@@ -84,10 +84,10 @@ color: white;
 
 /* Footer */
 footer {
+   background: linear-gradient(135deg, #4a90e2, #50e3c2);
   text-align: center;
   padding: 15px;
-  background-color: #01192a;
-  color: white;
+  color: black;
   position: fixed;
   position: sticky;
   bottom: 0;
@@ -120,11 +120,11 @@ footer {
   <li><a href="index.html">Home</a></li>
   <li><a href="courses.html">Courses</a></li>
   <li><a href="contact.html">Contact Us</a></li>
+  <li><a href="studyspace.html">Library</a></li>
   <li><button id="darkModeBtn" onclick="toggleDarkMode()">🌙 Dark Mode</button></li>
 </ul>
   </nav>
 </header>
-
 <script>
   // Toggle Sidebar
   function toggleMenu() {
@@ -160,9 +160,9 @@ footer {
 
   <!-- Slideshow -->
   <section class="slideshow">
-    <img src="images/images.png" class="active" alt="Slide 1">
-    <img src="images/slide2.jpg" alt="Slide 2">
-    <img src="images/slide3.jpg" alt="Slide 3">
+    <img src="images/location.png" class="active" alt="Slide 1">
+    <img src="images/studyspace.png" alt="Slide 2">
+    <img src="images/ads.png" alt ="Slide 3">
 
     <div class="buttons">
       <button onclick="prevSlide()">&#10094;</button>
@@ -181,34 +181,32 @@ footer {
     </div>
 
     <div class="ad-card">
+      <img src="images/crash-course.png" alt="Online Classes">
+      <a href="registration.html">🌐 Online NPSC PRELIMS CRASH COURSE– Register & Join Now!</a>
+    </div>
+
+    <div class="ad-card">
       <img src="images/admission.jpg" alt="Admissions Open">
       <a href="registration.html">📢 Admissions Open for all Exams Prep – Join Now!</a>
     </div>
-    
- 
     <div class="ad-card">
       <img src="images/mock-online.jpg" alt="Online Mock Test">
       <a href="registration.html">💻 Online Mock Tests Available – Register & Apply for Mock Tests!</a>
     </div>
-
     <div class="ad-card">
-      <img src="images/studyspace.jpg" alt="Study Space">
-      <a href="studyspace.html">📚 Quiet and Sound Space for Preparation</a>
+      <img src="images/studyspace.png" alt="Study Space">
+      <a href="studyspace.html">📚 Your personal zone for focused learning</a>
     </div>
-
    <div class="ad-card">
       <img src="images/ai-course.jpg" alt="AI Course">
       <a href="course-computer.html">🤖 New AI Courses launching soon!</a>
     </div>
   </div>
 </section>
-
-
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 Discovery Civils Academy | <i class="fa-solid fa-school"></i> Empowering Students</p>
   </footer>
-
   <!-- Scripts -->
   <script>
     // Slideshow
