@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Payment | Discovery Civils Academy</title>
-  <link rel="stylesheet" href="style.css">
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <style>
     body {
@@ -86,53 +85,64 @@
 
   <script>
     // Fetch student details from localStorage
-    const studentData = JSON.parse(localStorage.getItem("studentData"));
+    const student = JSON.parse(localStorage.getItem("studentData")) || {};
     const studentDetailsDiv = document.getElementById("studentDetails");
 
-    if (studentData) {
+    let amount = 500; // default fee
+
+    if (student.category === "admission" && student.subcategory === "Computer" && student.computerCourse) {
+      amount = parseInt(student.computerCourse) + 350; // add exam fee
+    }
+
+    if (student.name) {
       studentDetailsDiv.innerHTML = `
-        <p><strong>Name:</strong> ${studentData.name}</p>
-        <p><strong>Email:</strong> ${studentData.email}</p>
-        <p><strong>Category:</strong> ${studentData.category}</p>
-        <p><strong>Option:</strong> ${studentData.subcategory}</p>
-        <p><strong>Amount:</strong> ₹500</p>
+        <p><strong>Name:</strong> ${student.name}</p>
+        <p><strong>Email:</strong> ${student.email}</p>
+        <p><strong>Category:</strong> ${student.category}</p>
+        <p><strong>Option:</strong> ${student.subcategory}</p>
+        ${student.computerCourse ? `<p><strong>Course Fee:</strong> ₹${student.computerCourse} + Exam Fee ₹350</p>` : ""}
+        <p><strong>Total Amount:</strong> ₹${amount}</p>
       `;
     } else {
       studentDetailsDiv.innerHTML = "<p style='color:red;'>No student data found. Please register again.</p>";
       document.getElementById("payBtn").style.display = "none";
     }
 
-    // Handle Razorpay Payment
-    document.getElementById("payBtn").addEventListener("click", async function () {
-      // Normally you’d request orderId from backend:
-      const orderResponse = await fetch("http://localhost:5000/create-order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: 500, student: studentData })
-      });
-      const orderData = await orderResponse.json();
-
-      var options = {
-        key: orderData.key, 
-        amount: 500 * 100,
+    // Razorpay Payment Integration
+    document.getElementById("payBtn").addEventListener("click", function () {
+      const options = {
+        key: "rzp_test_1234567890", // 🔴 Replace with your Razorpay Key
+        amount: amount * 100, // amount in paise
         currency: "INR",
         name: "Discovery Civils Academy",
-        description: `${studentData.category} - ${studentData.subcategory}`,
-        order_id: orderData.orderId,
-        handler: async function (response) {
-          alert("✅ Payment Successful!");
-          window.location.href = "success.html"; // success page after payment
+        description: `${student.category} - ${student.subcategory}`,
+        handler: function (response) {
+          // ✅ Success → redirect
+          window.location.href = "success.html";
+        },
+        modal: {
+          ondismiss: function() {
+            // ❌ If user closes without paying
+            window.location.href = "failure.html";
+          }
         },
         prefill: {
-          name: studentData.name,
-          email: studentData.email
+          name: student.name || "",
+          email: student.email || ""
         },
         theme: {
           color: "#0a3d62"
         }
       };
-      var rzp = new Razorpay(options);
-      rzp.open();
+
+      const rzp1 = new Razorpay(options);
+
+      rzp1.on('payment.failed', function () {
+        // ❌ Failure → redirect
+        window.location.href = "failure.html";
+      });
+
+      rzp1.open();
     });
   </script>
 </body>
