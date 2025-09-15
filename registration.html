@@ -1,283 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Registration | Discovery Civils Academy</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #eef5f9, #dceefc);
-      margin: 0;
-      padding: 0;
-    }
-
-    h1 {
-      text-align: center;
-      margin: 30px 0 10px;
-      font-size: 2rem;
-      color: #0a3d62;
-    }
-
-    p.subtitle {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #666;
-      font-size: 1rem;
-    }
-
-    .form-container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 35px;
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-      animation: fadeIn 0.8s ease-in-out;
-    }
-
-    .form-container h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #004466;
-    }
-
-    .form-container label {
-      font-weight: bold;
-      display: block;
-      margin: 12px 0 6px;
-      color: #333;
-    }
-
-    .form-container input,
-    .form-container select {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-      margin-bottom: 5px;
-      transition: 0.3s;
-    }
-
-    .form-container input[type="file"] {
-      padding: 5px;
-    }
-
-    .preview {
-      font-size: 0.85rem;
-      color: #0077b6;
-      margin-bottom: 12px;
-      font-style: italic;
-    }
-
-    .form-container button {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: bold;
-      background: linear-gradient(90deg, #004466, #0077b6);
-      color: #fff;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-top: 15px;
-    }
-
-    .form-container button:hover {
-      background: #f39c12;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .documents-section {
-      display: none;
-      margin-top: 15px;
-      padding: 15px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      background: #f9f9f9;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Registration | Discovery Civils Academy</title>
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #eef5f9, #dceefc);
+    margin: 0; padding: 0;
+  }
+  h1 {
+    text-align: center; margin: 30px 0 10px;
+    font-size: 2rem; color: #0a3d62;
+  }
+  p.subtitle {
+    text-align: center; margin-bottom: 25px;
+    color: #666; font-size: 1rem;
+  }
+  .form-container {
+    max-width: 600px; margin: 0 auto; padding: 35px;
+    background: #fff; border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  .form-container h2 {
+    text-align: center; margin-bottom: 20px; color: #004466;
+  }
+  .form-container label {
+    font-weight: bold; display: block; margin: 12px 0 6px; color: #333;
+  }
+  .form-container input,
+  .form-container select {
+    width: 100%; padding: 12px; border: 1px solid #ccc;
+    border-radius: 8px; font-size: 1rem; margin-bottom: 5px;
+  }
+  .form-container button {
+    width: 100%; padding: 14px; border: none; border-radius: 8px;
+    font-size: 1rem; font-weight: bold;
+    background: linear-gradient(90deg, #004466, #0077b6);
+    color: #fff; cursor: pointer; transition: 0.3s; margin-top: 15px;
+  }
+  .form-container button:hover {
+    background: #f39c12; transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  .documents-section {
+    display: none; margin-top: 15px; padding: 15px;
+    border: 1px solid #ccc; border-radius: 8px; background: #f9f9f9;
+  }
+  #courseFee { font-weight:bold; color:#004466; margin-top:10px; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px);}
+    to   { opacity: 1; transform: translateY(0);}
+  }
+</style>
 </head>
 <body>
-  <h1>Discovery Civils Academy</h1>
-  <p class="subtitle">Register once and continue to payment</p>
+<h1>Discovery Civils Academy</h1>
+<p class="subtitle">Register once and continue to payment</p>
 
-  <div class="form-container">
-    <h2>Registration Form</h2>
-    <form id="registerForm">
+<div class="form-container">
+  <h2>Registration Form</h2>
+  <form id="registerForm">
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" required placeholder="Enter your full name">
 
-      <!-- Basic Details -->
-      <label for="name">Full Name:</label>
-      <input type="text" id="name" required placeholder="Enter your full name">
+    <label for="email">Email:</label>
+    <input type="email" id="email" required placeholder="Enter your email">
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" required placeholder="Enter your email">
+    <label for="category">Select Category:</label>
+    <select id="category" required>
+      <option value="">-- Select --</option>
+      <option value="admission">Admission</option>
+      <option value="mocktest">Mock Test</option>
+      <option value="library">Library</option>
+    </select>
 
-      <!-- Category -->
-      <label for="category">Select Category:</label>
-      <select id="category" required>
-        <option value="">-- Select --</option>
-        <option value="admission">Admission</option>
-        <option value="mocktest">Mock Test</option>
-        <option value="library">Library</option>
-      </select>
+    <label for="subcategory">Select Option:</label>
+    <select id="subcategory" required>
+      <option value="">-- Select a category first --</option>
+    </select>
 
-      <!-- Subcategory -->
-      <label for="subcategory">Select Option:</label>
-      <select id="subcategory" required>
-        <option value="">-- Select a category first --</option>
-      </select>
+    <label for="computerCourse" id="computerCourseLabel" style="display:none;">Select Computer Course:</label>
+    <select id="computerCourse" style="display:none;">
+      <option value="">-- Select Course --</option>
+      <option value="3600">BCC - Basic Computer Course (₹3600)</option>
+      <option value="5000">DCA - Diploma in Computer Application (6 months) (₹5000)</option>
+      <option value="12000">DCA - Diploma in Computer Application (12 months) (₹12000)</option>
+      <option value="8000">DTP - Desktop Publishing (₹8000)</option>
+      <option value="10000">DGDD - Diploma in Graphics Designing (₹10000)</option>
+      <option value="6000">CDTP - Certificate in Desk Top Publishing (₹6000)</option>
+      <option value="7000">CITA - Certificate in IT with GST (₹7000)</option>
+      <option value="15000">PGDCA - Post Graduate Diploma (₹15000)</option>
+    </select>
 
-      <!-- Computer Course (only visible for Admission → Computer) -->
-      <label for="computerCourse" id="computerCourseLabel" style="display:none;">Select Computer Course:</label>
-      <select id="computerCourse" style="display:none;">
-        <option value="">-- Select Course --</option>
-        <option value="3600">BCC - Basic Computer Course (₹3600)</option>
-        <option value="5000">DCA - Diploma in Computer Application (6 months) (₹5000)</option>
-        <option value="12000">DCA - Diploma in Computer Application (12 months) (₹12000)</option>
-        <option value="8000">DTP - Desktop Publishing (₹8000)</option>
-        <option value="10000">DGDD - Diploma in Graphics Designing (₹10000)</option>
-        <option value="6000">CDTP - Certificate in Desk Top Publishing (₹6000)</option>
-        <option value="7000">CITA - Certificate in IT with GST (₹7000)</option>
-        <option value="15000">PGDCA - Post Graduate Diploma in Computer Application (₹15000)</option>
-      </select>
+    <p id="courseFee"></p>
 
-      <p id="courseFee" style="font-weight:bold; color:#004466; margin-top:10px;"></p>
+    <div class="documents-section" id="documentsSection">
+      <h3>Upload Required Documents</h3>
+      <label for="doc10">10th Marksheet:</label>
+      <input type="file" id="doc10" accept=".pdf,.jpg,.jpeg,.png" required>
 
-      <!-- Document Upload Section -->
-      <div class="documents-section" id="documentsSection">
-        <h3>Upload Required Documents</h3>
+      <label for="doc12">12th Marksheet:</label>
+      <input type="file" id="doc12" accept=".pdf,.jpg,.jpeg,.png" required>
 
-        <label for="doc10">10th Marksheet:</label>
-        <input type="file" id="doc10" accept=".pdf,.jpg,.jpeg,.png" required>
-        <div id="preview10" class="preview"></div>
-
-        <label for="doc12">12th Marksheet:</label>
-        <input type="file" id="doc12" accept=".pdf,.jpg,.jpeg,.png" required>
-        <div id="preview12" class="preview"></div>
-
-        <div id="gradSection">
-          <label for="docGrad">Graduation Marksheet (Required):</label>
-          <input type="file" id="docGrad" accept=".pdf,.jpg,.jpeg,.png" required>
-          <div id="previewGrad" class="preview"></div>
-        </div>
-
-        <label for="docAdmit">Admit Card:</label>
-        <input type="file" id="docAdmit" accept=".pdf,.jpg,.jpeg,.png" required>
-        <div id="previewAdmit" class="preview"></div>
-
-        <label for="docSign">Signature:</label>
-        <input type="file" id="docSign" accept=".jpg,.jpeg,.png" required>
-        <div id="previewSign" class="preview"></div>
+      <div id="gradSection">
+        <label for="docGrad">Graduation Marksheet (Required):</label>
+        <input type="file" id="docGrad" accept=".pdf,.jpg,.jpeg,.png" required>
       </div>
 
-      <button type="submit">Submit & Proceed to Payment</button>
-    </form>
-  </div>
+      <label for="docAdmit">Admit Card:</label>
+      <input type="file" id="docAdmit" accept=".pdf,.jpg,.jpeg,.png" required>
 
-  <script>
-    const categorySelect = document.getElementById("category");
-    const subcategorySelect = document.getElementById("subcategory");
-    const computerCourseSelect = document.getElementById("computerCourse");
-    const computerCourseLabel = document.getElementById("computerCourseLabel");
-    const courseFee = document.getElementById("courseFee");
-    const documentsSection = document.getElementById("documentsSection");
-    const gradSection = document.getElementById("gradSection");
+      <label for="docSign">Signature:</label>
+      <input type="file" id="docSign" accept=".jpg,.jpeg,.png" required>
+    </div>
 
-    const optionsMap = {
-      admission: ["NPSC", "NSSB", "Computer"],
-      mocktest: ["Aptitude", "English", "Current Affairs"],
-      library: ["Half Day Shift - ₹799", "Full Day Shift - ₹1399"]
-    };
+    <button type="submit">Submit & Proceed to Payment</button>
+  </form>
+</div>
 
-    // Show subcategories based on category
-    categorySelect.addEventListener("change", () => {
-      const category = categorySelect.value;
-      subcategorySelect.innerHTML = "<option value=''>-- Select --</option>";
-      if (optionsMap[category]) {
-        optionsMap[category].forEach(opt => {
-          let option = document.createElement("option");
-          option.value = opt;
-          option.textContent = opt;
-          subcategorySelect.appendChild(option);
-        });
-      }
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const category     = document.getElementById("category");
+  const subcategory  = document.getElementById("subcategory");
+  const computerCourse = document.getElementById("computerCourse");
+  const computerLabel  = document.getElementById("computerCourseLabel");
+  const courseFee    = document.getElementById("courseFee");
+  const documentsSection = document.getElementById("documentsSection");
+  const gradSection  = document.getElementById("gradSection");
 
-      // Show documents only for admission
-      documentsSection.style.display = (category === "admission") ? "block" : "none";
+  const mockSubjects = [
+    "Ancient History","Medieval History","Current Affairs (Nov & Dec)",
+    "Modern History","Indian Polity 1","Indian Polity 2","Physical Geography",
+    "Current Affairs (Jan & Feb)","Indian Geography","Economy","Nagaland",
+    "Current Affairs (Mar & Budget)","Chemistry","Physics","CSAT (Aptitude)",
+    "Current Affairs (April & May)","Biology","Computer","History & Polity",
+    "Current Affairs (June & July)","Economy & Geography","General Science",
+    "Nagaland & Computer","CSAT (Reasoning)","Current Affairs (Aug & Sept)"
+  ];
 
-      // Reset computer course if category changes
-      computerCourseSelect.style.display = "none";
-      computerCourseLabel.style.display = "none";
-      courseFee.textContent = "";
-    });
+  const optionsMap = {
+    admission: ["NPSC", "NSSB", "Computer"],
+    mocktest : mockSubjects,
+    library  : ["Half Day Shift - ₹799", "Full Day Shift - ₹1399"]
+  };
 
-    // Show Computer Courses only if Admission → Computer
-    subcategorySelect.addEventListener("change", () => {
-      if (subcategorySelect.value === "Computer") {
-        computerCourseSelect.style.display = "block";
-        computerCourseLabel.style.display = "block";
-        gradSection.querySelector("label").textContent = "Graduation Marksheet (Optional):";
-        gradSection.querySelector("input").required = false;
-      } else {
-        computerCourseSelect.style.display = "none";
-        computerCourseLabel.style.display = "none";
-        courseFee.textContent = "";
-        gradSection.querySelector("label").textContent = "Graduation Marksheet (Required):";
-        gradSection.querySelector("input").required = true;
-      }
-    });
-
-    // Show fees when course is selected
-    computerCourseSelect.addEventListener("change", () => {
-      const fee = computerCourseSelect.value;
-      if (fee) {
-        courseFee.textContent = "Admission Fee: ₹" + fee + " ( + Exam Fee ₹350 )";
-      } else {
-        courseFee.textContent = "";
-      }
-    });
-
-    // File preview function
-    function showPreview(inputId, previewId) {
-      document.getElementById(inputId).addEventListener("change", function () {
-        const file = this.files[0];
-        if (file) {
-          document.getElementById(previewId).textContent = "Selected: " + file.name;
-        } else {
-          document.getElementById(previewId).textContent = "";
-        }
+  // Populate subcategories dynamically
+  category.addEventListener("change", () => {
+    subcategory.innerHTML = "";
+    if (category.value === "mocktest") {
+      subcategory.multiple = true;
+      mockSubjects.forEach(opt => {
+        const o = document.createElement("option");
+        o.value = opt; o.textContent = opt;
+        subcategory.appendChild(o);
+      });
+    } else {
+      subcategory.multiple = false;
+      subcategory.innerHTML = "<option value=''>-- Select --</option>";
+      (optionsMap[category.value] || []).forEach(opt => {
+        const o = document.createElement("option");
+        o.value = opt; o.textContent = opt;
+        subcategory.appendChild(o);
       });
     }
 
-    // Apply previews to all file inputs
-    showPreview("doc10", "preview10");
-    showPreview("doc12", "preview12");
-    showPreview("docGrad", "previewGrad");
-    showPreview("docAdmit", "previewAdmit");
-    showPreview("docSign", "previewSign");
+    documentsSection.style.display = (category.value === "admission") ? "block" : "none";
+    computerCourse.style.display = "none";
+    computerLabel.style.display = "none";
+    courseFee.textContent = "";
+  });
 
-    // Form submit
-    document.getElementById("registerForm").addEventListener("submit", function(e){
-      e.preventDefault();
-      const student = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        category: categorySelect.value,
-        subcategory: subcategorySelect.value,
-        computerCourse: computerCourseSelect.value,
-      };
-      localStorage.setItem("studentData", JSON.stringify(student));
-      window.location.href = "backend/payment.html";
-    });
-  </script>
+  subcategory.addEventListener("change", () => {
+    if (subcategory.value === "Computer" && category.value === "admission") {
+      computerCourse.style.display = "block";
+      computerLabel.style.display = "block";
+      gradSection.querySelector("label").textContent =
+        "Graduation Marksheet (Optional):";
+    } else {
+      computerCourse.style.display = "none";
+      computerLabel.style.display = "none";
+      gradSection.querySelector("label").textContent =
+        "Graduation Marksheet (Required):";
+    }
+    if (category.value === "mocktest") {
+      const count = [...subcategory.selectedOptions].length;
+      courseFee.textContent = count > 0 ? `Total Fee: ₹${count * 200}` : "";
+    }
+  });
+
+  computerCourse.addEventListener("change", () => {
+    const fee = computerCourse.value;
+    courseFee.textContent = fee ? `Admission Fee: ₹${fee} (+ Exam Fee ₹350)` : "";
+  });
+
+  document.getElementById("registerForm").addEventListener("submit", e => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    if (!name || !email || !category.value) {
+      alert("Please fill Name, Email and Category.");
+      return;
+    }
+
+    let selectedSubs = [];
+    if (category.value === "mocktest") {
+      selectedSubs = [...subcategory.selectedOptions].map(o => o.value);
+      if (selectedSubs.length === 0) {
+        alert("Please select at least one subject for Mock Test.");
+        return;
+      }
+    } else if (!subcategory.value) {
+      alert("Please select a subcategory.");
+      return;
+    }
+
+    if (category.value === "admission") {
+      const docInputs = documentsSection.querySelectorAll("input[type=file]");
+      for (let input of docInputs) {
+        if (!input.files.length) {
+          alert("Please upload all required documents.");
+          return;
+        }
+      }
+    }
+
+    const student = {
+      name,
+      email,
+      category : category.value,
+      subcategory : category.value === "mocktest" ? selectedSubs : subcategory.value,
+      totalFee : category.value === "mocktest" ? selectedSubs.length * 200 : ""
+    };
+    localStorage.setItem("studentData", JSON.stringify(student));
+    
+
+    // ✅ Redirect to payment.html (same folder)
+    window.location.href = "backend/payment.html";
+  });
+});
+</script>
 </body>
 </html>

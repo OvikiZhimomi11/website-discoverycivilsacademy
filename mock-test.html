@@ -127,10 +127,16 @@
   </footer>
 
   <script>
-    // Load student info
+    // Access control
+if (localStorage.getItem('paymentDone') !== 'true') {
+  alert('Please complete payment first!');
+  window.location.href = 'payment.html';
+}
+
     const student = JSON.parse(localStorage.getItem("student"));
     if (student) {
       document.getElementById("studentInfo").innerHTML = `
+      <p><strong><i class="fa-solid fa-book"></i> Subject(s):</strong> ${student.subjects.join(', ')}</p>
         <p><strong><i class="fa-solid fa-user-graduate"></i> Name:</strong> ${student.name}</p>
         <p><strong><i class="fa-solid fa-envelope"></i> Email:</strong> ${student.email}</p>
         <p><strong><i class="fa-solid fa-building-columns"></i> Exam:</strong> ${student.exam}</p>
