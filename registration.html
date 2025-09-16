@@ -236,9 +236,6 @@ document.addEventListener("DOMContentLoaded", function () {
       totalFee : category.value === "mocktest" ? selectedSubs.length * 200 : ""
     };
     localStorage.setItem("studentData", JSON.stringify(student));
-    
-
-    // ✅ Redirect to payment.html (same folder)
     window.location.href = "backend/payment.html";
   });
 });
