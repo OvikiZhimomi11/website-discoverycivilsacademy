@@ -6,10 +6,11 @@
   <title>Discovery Civils Academy</title>
   <link rel="stylesheet" href="style.css">
   <!-- Font Awesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* Basic styling for slideshow *
+    /* ---------- Slideshow ---------- */
     .slideshow {
       position: relative;
       max-width: 800px;
@@ -40,7 +41,7 @@
       border-radius: 5px;
     }
 
-    /* Announcement list */
+    /* ---------- Announcement list ---------- */
     .ads ul {
       list-style-type: none;
       padding-left: 0;
@@ -56,101 +57,69 @@
     .ads ul li a:hover {
       text-decoration: underline;
     }
-    /* Logo section */
-.logo-section {
-  text-align: center;
-  margin: 30px 0 10px;
-}
-.logo-section img {
-  max-width: 600px; 
-  height: auto;
-  display: inline-block;
-  border-radius: 400px;
-}
-header {
-  background: fixed linear-gradient(135deg, #4a90e2, #50e3c2);
-  color: white;
-  padding: 20px 20px;
-  position: relative;
-  text-align: center;
-  top: 0;
-  z-index: 1000;
-}
 
-h1 {
-color: white;
-}
+    /* ---------- Logo section ---------- */
+    .logo-section {
+      text-align: center;
+      margin: 30px 0 10px;
+    }
+    .logo-section img {
+      max-width: 600px;
+      height: auto;
+      display: inline-block;
+      border-radius: 400px;
+    }
 
-/* Footer */
-footer {
-   background: linear-gradient(135deg, #4a90e2, #50e3c2);
-  text-align: center;
-  padding: 15px;
-  color: black;
-  position: fixed;
-  position: sticky;
-  bottom: 0;
-  width: 100%;
-}
+    /* ---------- Header ---------- */
+    header {
+      background: fixed linear-gradient(135deg, #4a90e2, #50e3c2);
+      color: white;
+      padding: 20px 20px;
+      position: relative;
+      text-align: center;
+      top: 0;
+      z-index: 1000;
+    }
+    h1 { color: white; }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background: linear-gradient(135deg, #4a90e2, #50e3c2);
+      text-align: center;
+      padding: 15px;
+      color: black;
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
 
- <!-- Navbar -->
-<header>
-  <nav class="navbar">
-    <h1 class="logo">
-      <h1><i class="fa-solid fa-graduation-cap"></i>Discovery Civils Academy</h1>
-    <h1>
-     <i class="fa-solid fa-graduation-cap"></i> Since 2016. Civil Service Exam Prep.  
-      Kohima ➡️ Hiekha Complex, above ICICI Building, 4th Floor, Razhü Point.
-    </h1>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <h1><i class="fa-solid fa-graduation-cap"></i> Discovery Civils Academy</h1>
+      <h1>
+        <i class="fa-solid fa-graduation-cap"></i> Since 2016. Civil Service Exam Prep.
+        Kohima ➡️ Hiekha Complex, above ICICI Building, 4th Floor, Razhü Point.
+      </h1>
 
-    <!-- Hamburger Icon -->
-    <div class="menu-icon" onclick="toggleMenu()">
-      <i class="fa-solid fa-bars"></i>
-    </div>
+      <!-- Hamburger Icon -->
+      <div class="menu-icon" onclick="toggleMenu()">
+        <i class="fa-solid fa-bars"></i>
+      </div>
 
-    <!-- Sidebar Menu -->
-<ul class="nav-links" id="sideMenu">
-  <li>
-    <span class="close-btn" onclick="toggleMenu()">❌</span>
-  </li>
-  <li><a href="index.html"><strong>Home</strong></a></li>
-  <li><a href="courses.html"><strong>Courses</strong></a></li>
-  <li><a href="contact.html"><strong>Contact Us</strong></a></li>
-  <li><a href="studyspace.html"><strong>Library</strong></a></li>
-  <li><button id="darkModeBtn" onclick="toggleDarkMode()">🌙 Dark Mode</button></li>
-</ul>
-  </nav>
-</header>
-<script>
-  // Toggle Sidebar
-  function toggleMenu() {
-    document.getElementById("sideMenu").classList.toggle("active");
-  }
-  // Dark/Light Mode with localStorage
-  function toggleDarkMode() {
-    document.body.classList.toggle("dark-mode");
-
-    const btn = document.getElementById("darkModeBtn");
-    const isDark = document.body.classList.contains("dark-mode");
-
-    btn.textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
-
-    // Save preference
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-  }
-
-  // Apply theme on page load
-  window.onload = function() {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      document.body.classList.add("dark-mode");
-      document.getElementById("darkModeBtn").textContent = "☀️ Light Mode";
-    }
-  }
-</script>
+      <!-- Sidebar Menu -->
+      <ul class="nav-links" id="sideMenu">
+        <li><span class="close-btn" onclick="toggleMenu()">❌</span></li>
+        <li><a href="index.html"><strong>Home</strong></a></li>
+        <li><a href="courses.html"><strong>Courses</strong></a></li>
+        <li><a href="contact.html"><strong>Contact Us</strong></a></li>
+        <li><a href="studyspace.html"><strong>Library</strong></a></li>
+      </ul>
+    </nav>
+  </header>
 
   <!-- Logo Section -->
   <section class="logo-section">
@@ -161,136 +130,99 @@ footer {
   <section class="slideshow">
     <img src="images/location.png" class="active" alt="Slide 1">
     <img src="images/studyspace.png" alt="Slide 2">
-    <img src="images/ads.png" alt ="Slide 3">
-
+    <img src="images/ads.png" alt="Slide 3">
     <div class="buttons">
       <button onclick="prevSlide()">&#10094;</button>
       <button onclick="nextSlide()">&#10095;</button>
     </div>
   </section>
 
- <!-- About / Ads Section -->
-<section class="ads">
-  <h2><i class="fa-solid fa-bullhorn"></i> Upcoming Announcements</h2>
-  <div class="ads-container">
+  <!-- About / Ads Section -->
+  <section class="ads">
+    <h2><i class="fa-solid fa-bullhorn"></i> Upcoming Announcements</h2>
+    <div class="ads-container">
+      <div class="ad-card">
+        <img src="images/ads.png" alt="Mock Test">
+        <a href="registration.html">🎓🗓️ Comprehensive Subject-Wise Mock Test Schedule for NPSC Prelims 2025! – Apply Now!</a>
+      </div>
+      <div class="ad-card">
+        <img src="images/crash-course.png" alt="Online Classes">
+        <a href="registration.html">🌐 Online NPSC PRELIMS CRASH COURSE – Register & Join Now!</a>
+      </div>
+      <div class="ad-card">
+        <img src="images/admission.jpg" alt="Admissions Open">
+        <a href="registration.html">📢 Admissions Open for all Exams Prep – Join Now!</a>
+      </div>
+      <div class="ad-card">
+        <img src="images/mock-online.jpg" alt="Online Mock Test">
+        <a href="registration.html">💻 Online Mock Tests Available – Register & Apply for Mock Tests!</a>
+      </div>
+      <div class="ad-card">
+        <img src="images/studyspace.png" alt="Study Space">
+        <a href="studyspace.html">📚 Your personal zone for focused learning</a>
+      </div>
+      <div class="ad-card">
+        <img src="images/ai-course.jpg" alt="AI Course">
+        <a href="course-computer.html">🤖 New AI Courses launching soon!</a>
+      </div>
+    </div>
+  </section>
 
-    <div class="ad-card">
-      <img src="images/ads.png" alt="Mock Test">
-      <a href="registration.html">🎓🗓️ Comprehensive Subject-Wise Mock Test Schedule for NPSC Prelims 2025! – Apply Now!</a>
-    </div>
-
-    <div class="ad-card">
-      <img src="images/crash-course.png" alt="Online Classes">
-      <a href="registration.html">🌐 Online NPSC PRELIMS CRASH COURSE– Register & Join Now!</a>
-    </div>
-
-    <div class="ad-card">
-      <img src="images/admission.jpg" alt="Admissions Open">
-      <a href="registration.html">📢 Admissions Open for all Exams Prep – Join Now!</a>
-    </div>
-    <div class="ad-card">
-      <img src="images/mock-online.jpg" alt="Online Mock Test">
-      <a href="registration.html">💻 Online Mock Tests Available – Register & Apply for Mock Tests!</a>
-    </div>
-    <div class="ad-card">
-      <img src="images/studyspace.png" alt="Study Space">
-      <a href="studyspace.html">📚 Your personal zone for focused learning</a>
-    </div>
-   <div class="ad-card">
-      <img src="images/ai-course.jpg" alt="AI Course">
-      <a href="course-computer.html">🤖 New AI Courses launching soon!</a>
-    </div>
-  </div>
-</section>
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 Discovery Civils Academy | <i class="fa-solid fa-school"></i> Empowering Students</p>
   </footer>
+
   <!-- Scripts -->
   <script>
-    // Slideshow
-    const slides = document.querySelectorAll(".slideshow img");
-    let currentIndex = 0;
-
-    function showSlide(index) {
-      slides.forEach((img, i) => img.classList.remove("active"));
-      slides[index].classList.add("active");
+    // Sidebar toggle
+    function toggleMenu() {
+      document.getElementById("sideMenu").classList.toggle("active");
     }
 
-    function prevSlide() {
-      currentIndex--;
-      if (currentIndex < 0) currentIndex = slides.length - 1;
-      showSlide(currentIndex);
+    // Dark/Light Mode with localStorage
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      const btn = document.getElementById("darkModeBtn");
+      const isDark = document.body.classList.contains("dark-mode");
+      btn.textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+      localStorage.setItem("theme", isDark ? "dark" : "light");
     }
 
-  function nextSlide() {
-    currentIndex++;
-    if (currentIndex >= slides.length) currentIndex = 0;
-    showSlide(currentIndex);
-  }
-</script>
-
-
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<script>
-  document.getElementById("registerForm").addEventListener("submit", async function(e){
-    e.preventDefault();
-
-  let student = {
-    name: this.name.value,
-    email: this.email.value,
-    course: this.course.value,
-    amount: this.amount.value
-  };
-
-  // 1️⃣ Create order from backend
-  const res = await fetch("http://localhost:5000/create-order", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(student)
-  });
-
-  const data = await res.json();
-
-  // 2️⃣ Open Razorpay Checkout
-  var options = {
-    key: data.key,
-    amount: student.amount * 100,
-    currency: "INR",
-    name: "Discovery Civils Academy",
-    description: "Mock Test Registration",
-    order_id: data.orderId,
-    handler: async function (response) {
-      // 3️⃣ Verify payment
-      const verifyRes = await fetch("http://localhost:5000/verify-payment", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          order_id: response.razorpay_order_id,
-          payment_id: response.razorpay_payment_id,
-          signature: response.razorpay_signature,
-          student: student
-        })
-      });
-
-      const result = await verifyRes.json();
-      if(result.success){
-        alert("✅ Registration successful!");
-        window.location.href = "mocktest.html";
-      } else {
-        alert("❌ Payment failed");
+    // Apply theme on page load
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        const btn = document.getElementById("darkModeBtn");
+        if (btn) btn.textContent = "☀️ Light Mode";
       }
-    },
-    prefill: {
-      name: student.name,
-      email: student.email
-    },
-    theme: { color: "#0a3d62" }
-  };
-  var rzp1 = new Razorpay(options);
-  rzp1.open();
-});
-</script>
+    });
 
+    // -------- Slideshow (manual only) --------
+    document.addEventListener("DOMContentLoaded", () => {
+      const slides = document.querySelectorAll(".slideshow img");
+      let currentIndex = 0;
+
+      function showSlide(index) {
+        slides.forEach(img => img.classList.remove("active"));
+        slides[index].classList.add("active");
+      }
+
+      window.prevSlide = function () {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        showSlide(currentIndex);
+      };
+
+      window.nextSlide = function () {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+      };
+    });
+  </script>
+
+  <!-- Razorpay (if you use payment later) -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <!-- Your Razorpay integration can stay here -->
 </body>
 </html>
