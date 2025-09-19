@@ -86,12 +86,12 @@
     <select id="computerCourse" style="display:none;">
       <option value="">-- Select Course --</option>
       <option value="3600">BCC - Basic Computer Course (₹3600)</option>
-      <option value="5000">DCA - Diploma in Computer Application (6 months) (₹5000)</option>
-      <option value="12000">DCA - Diploma in Computer Application (12 months) (₹12000)</option>
+      <option value="5000">DCA - Diploma (6 months) (₹5000)</option>
+      <option value="12000">DCA - Diploma (12 months) (₹12000)</option>
       <option value="8000">DTP - Desktop Publishing (₹8000)</option>
-      <option value="10000">DGDD - Diploma in Graphics Designing (₹10000)</option>
-      <option value="6000">CDTP - Certificate in Desk Top Publishing (₹6000)</option>
-      <option value="7000">CITA - Certificate in IT with GST (₹7000)</option>
+      <option value="10000">DGDD - Graphics Designing (₹10000)</option>
+      <option value="6000">CDTP - Certificate DTP (₹6000)</option>
+      <option value="7000">CITA - IT with GST (₹7000)</option>
       <option value="15000">PGDCA - Post Graduate Diploma (₹15000)</option>
     </select>
 
@@ -101,18 +101,14 @@
       <h3>Upload Required Documents</h3>
       <label for="doc10">10th Marksheet:</label>
       <input type="file" id="doc10" accept=".pdf,.jpg,.jpeg,.png" required>
-
       <label for="doc12">12th Marksheet:</label>
       <input type="file" id="doc12" accept=".pdf,.jpg,.jpeg,.png" required>
-
       <div id="gradSection">
         <label for="docGrad">Graduation Marksheet (Required):</label>
         <input type="file" id="docGrad" accept=".pdf,.jpg,.jpeg,.png" required>
       </div>
-
       <label for="docAdmit">Admit Card:</label>
       <input type="file" id="docAdmit" accept=".pdf,.jpg,.jpeg,.png" required>
-
       <label for="docSign">Signature:</label>
       <input type="file" id="docSign" accept=".jpg,.jpeg,.png" required>
     </div>
@@ -123,13 +119,13 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const category     = document.getElementById("category");
-  const subcategory  = document.getElementById("subcategory");
-  const computerCourse = document.getElementById("computerCourse");
-  const computerLabel  = document.getElementById("computerCourseLabel");
-  const courseFee    = document.getElementById("courseFee");
-  const documentsSection = document.getElementById("documentsSection");
-  const gradSection  = document.getElementById("gradSection");
+  const category        = document.getElementById("category");
+  const subcategory     = document.getElementById("subcategory");
+  const computerCourse  = document.getElementById("computerCourse");
+  const computerLabel   = document.getElementById("computerCourseLabel");
+  const courseFee       = document.getElementById("courseFee");
+  const documentsSection= document.getElementById("documentsSection");
+  const gradSection     = document.getElementById("gradSection");
 
   const mockSubjects = [
     "Ancient History","Medieval History","Current Affairs (Nov & Dec)",
@@ -147,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
     library  : ["Half Day Shift - ₹799", "Full Day Shift - ₹1399"]
   };
 
-  // Populate subcategories dynamically
+  // Populate subcategories
   category.addEventListener("change", () => {
     subcategory.innerHTML = "";
     if (category.value === "mocktest") {
@@ -166,24 +162,18 @@ document.addEventListener("DOMContentLoaded", function () {
         subcategory.appendChild(o);
       });
     }
-
     documentsSection.style.display = (category.value === "admission") ? "block" : "none";
-    computerCourse.style.display = "none";
-    computerLabel.style.display = "none";
+    computerCourse.style.display = computerLabel.style.display = "none";
     courseFee.textContent = "";
   });
 
   subcategory.addEventListener("change", () => {
     if (subcategory.value === "Computer" && category.value === "admission") {
-      computerCourse.style.display = "block";
-      computerLabel.style.display = "block";
-      gradSection.querySelector("label").textContent =
-        "Graduation Marksheet (Optional):";
+      computerCourse.style.display = computerLabel.style.display = "block";
+      gradSection.querySelector("label").textContent = "Graduation Marksheet (Optional):";
     } else {
-      computerCourse.style.display = "none";
-      computerLabel.style.display = "none";
-      gradSection.querySelector("label").textContent =
-        "Graduation Marksheet (Required):";
+      computerCourse.style.display = computerLabel.style.display = "none";
+      gradSection.querySelector("label").textContent = "Graduation Marksheet (Required):";
     }
     if (category.value === "mocktest") {
       const count = [...subcategory.selectedOptions].length;
@@ -196,11 +186,11 @@ document.addEventListener("DOMContentLoaded", function () {
     courseFee.textContent = fee ? `Admission Fee: ₹${fee} (+ Exam Fee ₹350)` : "";
   });
 
+  // Final submit
   document.getElementById("registerForm").addEventListener("submit", e => {
     e.preventDefault();
-
     const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
+    const email= document.getElementById("email").value.trim();
     if (!name || !email || !category.value) {
       alert("Please fill Name, Email and Category.");
       return;
@@ -209,8 +199,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let selectedSubs = [];
     if (category.value === "mocktest") {
       selectedSubs = [...subcategory.selectedOptions].map(o => o.value);
-      if (selectedSubs.length === 0) {
-        alert("Please select at least one subject for Mock Test.");
+      if (!selectedSubs.length) {
+        alert("Select at least one subject for Mock Test.");
         return;
       }
     } else if (!subcategory.value) {
@@ -227,13 +217,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     }
+
     const student = {
       name,
       email,
-      category : category.value,
-      subcategory : category.value === "mocktest" ? selectedSubs : subcategory.value,
+      category: category.value,
+      subcategory: category.value === "mocktest" ? selectedSubs : subcategory.value,
       totalFee : category.value === "mocktest" ? selectedSubs.length * 200 : ""
     };
+
+    // Save data and go to payment page
     localStorage.setItem("studentData", JSON.stringify(student));
     window.location.href = "backend/payment.html";
   });
