@@ -2,7 +2,7 @@
 
 🚀 Aspiring Software Developer | React Native & Firebase Enthusiast  
 
-I’m passionate about building apps that solve real-world problems. Currently, I’m developing **ReadRev**, an eBook platform for independent and indigenous authors, and also experimenting with full-stack web development.  
+I’m passionate about building apps and websites  that solve real-world problems. Currently, I’m developing **ReadRev**, an eBook platform for independent and indigenous authors, and also experimenting with full-stack web development.  
 
 ---
 
